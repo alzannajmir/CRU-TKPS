@@ -15,7 +15,7 @@
         
         <!-- Baris Hak Cipta -->
         <p class="footer-copyright">
-          &copy; 2026 All Rights Reserved. Designed with clinical standards.
+          &copy; 2026 All Rights Reserved.
         </p>
 
       </div>

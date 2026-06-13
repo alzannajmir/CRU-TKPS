@@ -15,7 +15,15 @@
           <p>
             A dedicated clinical trial team of the <strong>Department of Child Health at Hasan Sadikin Hospital</strong>, 
             established to conduct high-quality research and clinical trials meticulously based on 
-            <span class="badge">ICH-GCP standards</span>.
+            <span class="badge">ICH-GCP standards</span>. The team members are
+pediatricians with several
+subspecialists of disciplines who
+care with research at community
+and clinical trials. The expectation
+is to be a professional team to
+answer the challenge of sciences
+in the future.
+
           </p>
         </div>
       </div>
