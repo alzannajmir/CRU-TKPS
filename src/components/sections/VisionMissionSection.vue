@@ -1,21 +1,31 @@
 <template>
   <section id="vision-mission" class="vision-mission-section">
+    <div class="glow-shape shape-glow-yellow"></div>
+    <div class="glow-shape shape-glow-blue"></div>
+
+    <div class="animated-ring-shape"></div>
+
+    <div class="brand-shape shape-top-right">
+      <img src="/src/assets/images/Shape.png" alt="Dekorasi Latar Belakang" />
+    </div>
+    <div class="brand-shape shape-bottom-left">
+      <img src="/src/assets/images/Shape.png" alt="Dekorasi Latar Belakang" />
+    </div>
+
+    <div class="blob-shape blob-left"></div>
+
     <div class="container">
 
-      <!-- Bagian Header Judul -->
       <div class="section-header">
         <span class="sub-title">Our Foundations</span>
         <h2>Vision & <span class="highlight">Mission</span></h2>
         <div class="accent-line"></div>
       </div>
 
-      <!-- Grid Visi & Misi 2 Kolom -->
       <div class="grid">
         
-        <!-- KARTU VISI -->
         <div class="card vision-card">
           <div class="card-icon-header">
-            <!-- Ikon Visi / Target Target -->
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
             <h3>Vision</h3>
           </div>
@@ -27,10 +37,8 @@
           <div class="card-bg-decor"></div>
         </div>
 
-        <!-- KARTU MISI -->
         <div class="card mission-card">
           <div class="card-icon-header">
-            <!-- Ikon Misi / Roket / Aksi -->
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 3.42-2 3.42s2.16-.5 3.42-2M15 9l-9 9M16 5l3 3M12 4l7 7-1.5 1.5M10.5 8.5l-4 4"/></svg>
             <h3>Mission</h3>
           </div>
@@ -68,18 +76,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 .vision-mission-section {
-  background-color: #F8FAFC; /* Abu-abu kontras ultra-light */
+  background-color: #F8FAFC; /* Sama dengan About */
   padding: 120px 0;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  position: relative; 
+  overflow: hidden;   
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 3; 
 }
 
-/* --- Header Gaya Makro --- */
+/* ======================================================= */
+/* --- BACKGROUND ELEMENTS ADAPTATION (FROM ABOUT) ------- */
+/* ======================================================= */
+
+/* --- 1. Properti Radial Glow --- */
+.glow-shape {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.shape-glow-yellow {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 199, 0, 0.07) 0%, rgba(255, 199, 0, 0) 70%);
+  top: -50px;
+  left: -50px;
+  filter: blur(40px);
+}
+
+.shape-glow-blue {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 71, 165, 0.04) 0%, rgba(0, 71, 165, 0) 70%);
+  bottom: -100px;
+  right: -100px;
+  filter: blur(50px);
+}
+
+/* --- 2. Properti Dashed Ring --- */
+.animated-ring-shape {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px dashed rgba(0, 71, 165, 0.05);
+  border-radius: 50%;
+  bottom: 8%;
+  left: 4%;
+  z-index: 1;
+  pointer-events: none;
+  animation: rotateClockwise 45s linear infinite;
+}
+
+/* --- 3. Properti Gambar Shape .png --- */
+.brand-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+.brand-shape img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.12; 
+  filter: blur(1px); 
+}
+
+.shape-top-right {
+  top: -150px;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+  transform: rotate(35deg); /* Variasi sudut dibanding About */
+}
+
+.shape-bottom-left {
+  bottom: -180px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  transform: rotate(-40deg);
+}
+
+/* --- 4. Kombinasi Blob Organik yang Diperhalus --- */
+.blob-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(3px);
+}
+
+.blob-left {
+  width: 380px;
+  height: 380px;
+  background-color: rgba(0, 71, 165, 0.02);
+  border-radius: 54% 46% 62% 38% / 45% 52% 48% 55%;
+  top: 30%;
+  left: -120px;
+  animation: floatFluid 22s ease-in-out infinite alternate;
+}
+
+/* --- KEYFRAMES ANIMASI --- */
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatFluid {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  100% { transform: translate(25px, -15px) rotate(15deg) scale(1.03); }
+}
+
+/* ======================================================= */
+/* --- GAYA KONTEN & KARTU UTAMA ------------------------- */
+/* ======================================================= */
+
 .section-header {
   text-align: center;
   display: flex;
@@ -93,19 +213,19 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #FFC700; /* Warna kuning dari logo */
+  color: #FFC700; 
   margin-bottom: 8px;
 }
 
 h2 {
   font-size: 2.5rem;
-  color: #002D6B; /* Biru gelap dari logo */
+  color: #002D6B; 
   margin: 0 0 16px 0;
   font-weight: 700;
 }
 
 h2 .highlight {
-  color: #0047A5; /* Biru utama dari lingkaran luar logo */
+  color: #0047A5; 
 }
 
 .accent-line {
@@ -115,7 +235,6 @@ h2 .highlight {
   border-radius: 2px;
 }
 
-/* --- Pengaturan Grid 2 Kolom Sejajar --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -123,7 +242,6 @@ h2 .highlight {
   align-items: stretch;
 }
 
-/* --- Gaya Kartu Visi Misi --- */
 .card {
   background: #FFFFFF;
   border: 1px solid rgba(0, 71, 165, 0.04);
@@ -134,6 +252,7 @@ h2 .highlight {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 2; 
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -142,7 +261,7 @@ h2 .highlight {
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
-  color: #0047A5; /* Warna ikon biru utama */
+  color: #0047A5; 
   position: relative;
   z-index: 2;
 }
@@ -163,7 +282,6 @@ p {
   z-index: 2;
 }
 
-/* --- Kustomisasi List Misi --- */
 .custom-list {
   list-style: none;
   padding: 0;
@@ -185,7 +303,7 @@ p {
   width: 24px;
   height: 24px;
   background-color: rgba(0, 71, 165, 0.06);
-  color: #0047A5; /* Warna centang biru */
+  color: #0047A5; 
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -201,7 +319,6 @@ p {
   color: #475569;
 }
 
-/* --- Elemen Dekorasi Latar Belakang Kartu --- */
 .card-bg-decor {
   position: absolute;
   bottom: -40px;
@@ -222,23 +339,30 @@ p {
 
 .card:hover .card-bg-decor {
   transform: scale(1.3);
-  background: radial-gradient(circle, rgba(255, 199, 0, 0.08) 0%, transparent 70%); /* Berubah gradasi kuning halus */
+  background: radial-gradient(circle, rgba(255, 199, 0, 0.08) 0%, transparent 70%); 
 }
 
 .card:hover .list-icon {
   background-color: #0047A5;
-  color: #FFFFFF; /* Centang menyala putih saat kartu disorot */
+  color: #FFFFFF; 
 }
 
 /* --- Penataan Responsif (Tablet & Mobile) --- */
 @media (max-width: 992px) {
   .grid {
-    grid-template-columns: 1fr; /* Berubah menjadi tumpuk 1 kolom di tablet/HP */
+    grid-template-columns: 1fr; 
     gap: 24px;
   }
   .card {
     padding: 36px;
   }
+  
+  /* Penyesuaian scale background asset di resolusi kecil */
+  .shape-glow-yellow { width: 250px; height: 250px; }
+  .shape-glow-blue { width: 300px; height: 300px; }
+  .shape-top-right { width: 300px; height: 300px; right: -50px; }
+  .shape-bottom-left { width: 320px; height: 320px; left: -80px; }
+  .animated-ring-shape, .blob-left { display: none; }
 }
 
 @media (max-width: 768px) {
@@ -247,6 +371,9 @@ p {
   }
   h2 {
     font-size: 2rem;
+  }
+  .brand-shape img {
+    opacity: 0.04;
   }
 }
 </style>

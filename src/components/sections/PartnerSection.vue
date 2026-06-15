@@ -4,17 +4,13 @@ const getImageUrl = (name) => {
   return new URL(`/src/assets/partners/${name}`, import.meta.url).href
 }
 
-// Data Partner Internasional
-const internationalPartners = [
+// Penggabungan semua data partner menjadi satu kesatuan
+const allPartners = [
   { name: "WHO", logo: getImageUrl("logoWho.png") },
   { name: "SINOVAC Biotech Ltd.", logo: getImageUrl("logoSinovac.png") },
   { name: "MCRI", logo: getImageUrl("logoMcri.jpg") },
   { name: "Minahai", logo: getImageUrl("logoMinhai.jpg") },
-  { name: "Anhui Zifei", logo: getImageUrl("logoZhifei.png") }
-]
-
-// Data Partner Nasional
-const nationalPartners = [
+  { name: "Anhui Zifei", logo: getImageUrl("logoZhifei.png") },
   { name: "Sanofi Pasteur", logo: getImageUrl("logoSanofi.png") },
   { name: "Bio Farma", logo: getImageUrl("logoBiofarma.png") },
   { name: "Prodia", logo: getImageUrl("logoProdia.png") }
@@ -32,55 +28,23 @@ const nationalPartners = [
       </div>
 
       <div class="category-block">
-        <div class="category-title">
-          <div class="icon-indicator">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3>International Collaborations</h3>
-          <div class="title-line"></div>
-        </div>
-        
         <div class="carousel-contained-wrapper">
           <div class="carousel-track scroll-left">
-            <div class="partner-card" v-for="partner in internationalPartners" :key="'int-'+partner.name">
+            
+            <div class="partner-card" v-for="partner in allPartners" :key="'partner-'+partner.name">
               <div class="img-container">
                 <img :src="partner.logo" :alt="partner.name" class="partner-img" />
               </div>
               <p class="partner-name">{{ partner.name }}</p>
             </div>
-            <div class="partner-card" v-for="partner in internationalPartners" :key="'int-dup-'+partner.name" aria-hidden="true">
-              <div class="img-container">
-                <img :src="partner.logo" :alt="partner.name" class="partner-img" />
-              </div>
-              <p class="partner-name">{{ partner.name }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="category-block">
-        <div class="category-title">
-          <div class="icon-indicator">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <h3>National Collaborations</h3>
-          <div class="title-line"></div>
-        </div>
+            <div class="partner-card" v-for="partner in allPartners" :key="'partner-dup-'+partner.name" aria-hidden="true">
+              <div class="img-container">
+                <img :src="partner.logo" :alt="partner.name" class="partner-img" />
+              </div>
+              <p class="partner-name">{{ partner.name }}</p>
+            </div>
 
-        <div class="carousel-contained-wrapper">
-          <div class="carousel-track scroll-right">
-            <div class="partner-card" v-for="partner in nationalPartners" :key="'nat-'+partner.name">
-              <div class="img-container">
-                <img :src="partner.logo" :alt="partner.name" class="partner-img" />
-              </div>
-              <p class="partner-name">{{ partner.name }}</p>
-            </div>
-            <div class="partner-card" v-for="partner in nationalPartners" :key="'nat-dup-'+partner.name" aria-hidden="true">
-              <div class="img-container">
-                <img :src="partner.logo" :alt="partner.name" class="partner-img" />
-              </div>
-              <p class="partner-name">{{ partner.name }}</p>
-            </div>
           </div>
         </div>
       </div>
@@ -104,13 +68,13 @@ const nationalPartners = [
   padding: 0 24px;
 }
 
-/* --- Header --- */
+/* --- Header Gaya Makro --- */
 .section-header {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px; /* Jarak disesuaikan agar lebih padat ke carousel */
 }
 
 .sub-title {
@@ -140,45 +104,12 @@ h2 .highlight {
   border-radius: 2px;
 }
 
-/* --- Kategori --- */
 .category-block {
-  margin-bottom: 60px;
-}
-
-.category-block:last-child {
   margin-bottom: 0;
 }
 
-.category-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.icon-indicator {
-  color: #0047A5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.category-title h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #002D6B;
-  margin: 0;
-  white-space: nowrap;
-}
-
-.title-line {
-  flex-grow: 1;
-  height: 1px;
-  background-color: rgba(0, 71, 165, 0.12);
-}
-
 /* ======================================================= */
-/* --- PERBAIKAN UTAMA: MEMBATASI JALUR CAROUSEL AGAR DI TENGAH --- */
+/* --- BINGKAI LINTASAN TENGAH YANG PROPORSIAL ------------ */
 /* ======================================================= */
 
 .carousel-contained-wrapper {
@@ -187,48 +118,57 @@ h2 .highlight {
   overflow: hidden;
   padding: 20px 0;
   
-  /* KUNCI BARU: Memberikan batas ruang kosong (margin dalam) di kiri & kanan 
-     agar lintasan jalan logo bergeser menciut ke area tengah halaman */
-  padding-left: 100px;
-  padding-right: 100px;
-  
-  /* Membuat ujung area potong lintasan menjadi rapi */
+  /* Menjaga agar ujung area gerak tetap berada di dalam batasan tengah halaman */
+  padding-left: 60px;
+  padding-right: 60px;
   border-radius: 16px;
 }
 
-/* Jalur gerak internal */
+/* Efek samaran gradasi halus saat logo bergeser masuk/keluar di area tengah */
+.carousel-contained-wrapper::before,
+.carousel-contained-wrapper::after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carousel-contained-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #F8FAFC 15%, transparent 100%);
+}
+
+.carousel-contained-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #F8FAFC 15%, transparent 100%);
+}
+
+/* Jalur penampung internal */
 .carousel-track {
   display: flex;
   width: max-content;
   gap: 24px;
 }
 
-/* Jalur Animasi Gerak */
+/* Animasi Putar Kiri */
 .scroll-left {
-  animation: marqueeLeft 30s linear infinite;
-}
-
-.scroll-right {
-  animation: marqueeRight 25s linear infinite;
+  animation: marqueeLeft 35s linear infinite; /* Kecepatan stabil untuk isi 8 logo */
 }
 
 .carousel-contained-wrapper:hover .carousel-track {
   animation-play-state: paused;
 }
 
-/* Sinkronisasi perhitungan jarak keyframe */
 @keyframes marqueeLeft {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-50% - 12px)); }
 }
 
-@keyframes marqueeRight {
-  0% { transform: translateX(calc(-50% - 12px)); }
-  100% { transform: translateX(0); }
-}
-
 /* ======================================================= */
-/* --- GAYA KARTU BOX PARTNER KEMBALI KE UKURAN ASLI ----- */
+/* --- GAYA KARTU BOX PARTNER KONSISTEN ------------------- */
 /* ======================================================= */
 
 .partner-card {
@@ -241,7 +181,7 @@ h2 .highlight {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  width: 240px; /* Ukuran lebar dikembalikan ke ukuran semula (tidak diperkecil) */
+  width: 240px; 
   flex-shrink: 0;
   box-shadow: 0 4px 18px rgba(0, 45, 107, 0.01);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -287,9 +227,8 @@ h2 .highlight {
 /* --- Responsif Mobile --- */
 @media (max-width: 992px) {
   .carousel-contained-wrapper {
-    /* Mengurangi jarak tengah pada tablet agar muat banyak */
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -301,9 +240,12 @@ h2 .highlight {
     font-size: 2rem;
   }
   .carousel-contained-wrapper {
-    /* Pada layar HP, kembalikan ke mepet ujung agar hemat ruang */
     padding-left: 0;
     padding-right: 0;
+  }
+  .carousel-contained-wrapper::before,
+  .carousel-contained-wrapper::after {
+    width: 40px;
   }
   .partner-card {
     width: 200px;

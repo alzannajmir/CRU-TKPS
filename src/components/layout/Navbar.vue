@@ -74,7 +74,6 @@ onUnmounted(() => {
       </button>
 
       <ul class="nav-menu" :class="{ 'active': isMobileMenuOpen }">
-        <li><a href="#vision-mission" @click="closeMobileMenu">Vision & Mission</a></li>
         <li><a href="#services" @click="closeMobileMenu">Services</a></li>
         <li><a href="#research" @click="closeMobileMenu">Research</a></li>
         <li><a href="#team" @click="closeMobileMenu">Team</a></li>

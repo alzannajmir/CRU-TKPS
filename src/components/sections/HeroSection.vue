@@ -2,13 +2,13 @@
   <section class="hero">
     <div class="bg-glow"></div>
 
-    <div class="hero-shape shape-top-left">
+    <!-- <div class="hero-shape shape-top-left">
       <img src="/src/assets/images/Shape.png" alt="Dekorasi Latar Belakang" />
     </div>
     
     <div class="hero-shape shape-bottom-right">
       <img src="/src/assets/images/Shape.png" alt="Dekorasi Latar Belakang" />
-    </div>
+    </div> -->
 
     <div class="content">
       <span class="sub-title">Clinical Research Unit</span>
@@ -42,14 +42,22 @@
   min-height: 650px;
   display: flex;
   align-items: center;
-  background-color: #FFFFFF;
   color: #002D6B; 
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   padding-top: 80px; 
+
+  /* --- PENGATURAN BACKGROUND BARU --- */
+  /* Silakan ganti path URL di bawah dengan gambar bertema medis/fasilitas lab Anda */
+  background-image: 
+    linear-gradient(to right, #FFFFFF 35%, rgba(255, 255, 255, 0.85) 60%, rgba(255, 255, 255, 0.4) 100%),
+    url('/src/assets/images/hero-bg.jpeg'); 
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
 }
 
-/* Pendaran warna radial latar belakang */
+/* Pendaran warna radial latar belakang (dibuat sedikit lebih kontras agar tetap terlihat) */
 .bg-glow {
   position: absolute;
   top: 50%;
@@ -57,12 +65,12 @@
   transform: translate(-50%, -50%);
   width: 900px;
   height: 900px;
-  background: radial-gradient(circle, rgba(0, 71, 165, 0.02) 0%, rgba(255, 199, 0, 0.01) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(0, 71, 165, 0.04) 0%, rgba(255, 199, 0, 0.02) 60%, transparent 100%);
   z-index: 1;
   pointer-events: none;
 }
 
-/* --- PENGATURAN STRUKTUR SHAPE BARU --- */
+/* --- PENGATURAN STRUKTUR SHAPE --- */
 .hero-shape {
   position: absolute;
   pointer-events: none;
@@ -74,22 +82,18 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  /* KUNCI UTAMA: Membuat gambar menjadi sangat samar dan transparan */
-  opacity: 0.15; 
-  /* Efek blur opsional untuk membuat transisi shape makin halus menyatu dengan background putih */
+  opacity: 0.12; 
   filter: blur(1px); 
 }
 
-/* Posisi di Kiri Atas: Diperbesar dan digeser keluar layar setengah bagian */
 .shape-top-left {
   top: -120px;
   left: -120px;
   width: 450px;
   height: 450px;
-  transform: rotate(-15deg); /* Sedikit rotasi estetis */
+  transform: rotate(-15deg); 
 }
 
-/* Posisi di Kanan Bawah */
 .shape-bottom-right {
   bottom: -150px;
   right: -150px;
@@ -104,6 +108,7 @@
   width: 100%;
   margin: auto;
   padding: 0 24px;
+  position: relative;
   z-index: 2; 
 }
 
@@ -115,7 +120,7 @@
   letter-spacing: 1.5px;
   color: #0052CC; 
   margin-bottom: 20px;
-  background: rgba(0, 82, 204, 0.06);
+  background: rgba(0, 82, 204, 0.08); /* Sedikit ditingkatkan agar lebih terbaca di atas background */
   padding: 8px 20px;
   border-radius: 50px;
 }
@@ -132,7 +137,7 @@ h1 {
 
 .highlight {
   color: #0052CC;
-  background: linear-gradient(120deg, rgba(255, 199, 0, 0.25) 0%, rgba(255, 199, 0, 0.25) 100%);
+  background: linear-gradient(120deg, rgba(255, 199, 0, 0.3) 0%, rgba(255, 199, 0, 0.3) 100%);
   padding: 0 8px;
   border-radius: 4px;
 }
@@ -141,9 +146,9 @@ h1 {
   font-size: 1.3rem;
   line-height: 1.6;
   max-width: 650px;
-  color: #4A5568; 
+  color: #2D3748; /* Dibuat sedikit lebih gelap dari #4A5568 agar ekstra kontras */
   margin: 0 0 44px 0;
-  font-weight: 500;
+  font-weight: 600; /* Ditingkatkan ke 600 agar tipografi kokoh di atas gambar */
 }
 
 .btn-container {
@@ -182,6 +187,12 @@ button.btn-primary:hover svg {
 
 /* --- Penataan Responsif --- */
 @media (max-width: 992px) {
+  .hero {
+    /* Mengubah arah gradien menjadi vertikal saat di tablet/HP agar teks di atas aman */
+    background-image: 
+      linear-gradient(to bottom, #FFFFFF 45%, rgba(255, 255, 255, 0.9) 70%, rgba(255, 255, 255, 0.6) 100%),
+      url('/src/assets/images/hero-bg.jpg');
+  }
   h1 {
     font-size: 3rem;
   }
@@ -207,7 +218,6 @@ button.btn-primary:hover svg {
   .description {
     font-size: 1.1rem;
   }
-  /* Mengurangi opasitas lebih dalam lagi di mobile agar layar bersih */
   .hero-shape img {
     opacity: 0.04;
   }
