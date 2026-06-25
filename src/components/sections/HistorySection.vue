@@ -1,5 +1,4 @@
 <script setup>
-// Data 3 Aktivitas Penelitian Terencana (2026 - 2028)
 const ongoingResearch = [
   {
     title: "HEXAVALENT Phase I",
@@ -39,10 +38,11 @@ const ongoingResearch = [
       </div>
 
       <div class="research-grid">
-        <div 
+        <router-link 
+          :to="`/research-activity/${project.id}`"
           class="research-card"
           v-for="(project, index) in ongoingResearch"
-          :key="project.title"
+          :key="project.id"
         >
           <div class="card-header-meta">
             <span class="project-index">Project 0{{ index + 1 }}</span>
@@ -92,9 +92,8 @@ const ongoingResearch = [
           </div>
 
           <div class="glow-indicator"></div>
-        </div>
+        </router-link>
       </div>
-
     </div>
   </section>
 </template>
@@ -150,10 +149,7 @@ h2 .highlight {
   border-radius: 2px;
 }
 
-/* ======================================================= */
-/* --- GRID DESAIN STRUKTUR PARALEL 3 KOLOM --------------- */
-/* ======================================================= */
-
+/* --- GRID DESAIN STRUKTUR PARALEL 3 KOLOM --- */
 .research-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -173,6 +169,8 @@ h2 .highlight {
   justify-content: space-between;
   box-shadow: 0 4px 20px rgba(0, 45, 107, 0.01);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none; 
+  cursor: pointer;
 }
 
 /* Kepala Kartu Informasi Status */
@@ -211,7 +209,6 @@ h2 .highlight {
   background-color: #0047A5;
   border-radius: 50%;
   display: inline-block;
-  /* Animasi berkedip halus penanda riset aktif */
   animation: pulse 2s infinite; 
 }
 
@@ -270,6 +267,7 @@ h2 .highlight {
 .detail-text {
   display: flex;
   flex-direction: column;
+  text-align: left; /* Biar teks tetep rata kiri */
 }
 
 .detail-text label {
@@ -301,15 +299,12 @@ h2 .highlight {
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: #FFC700; /* Warna kuning emas bersinar saat disorot */
+  background-color: #FFC700; 
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
-/* ======================================================= */
-/* --- HOVER EFFECT INTERACTIVE -------------------------- */
-/* ======================================================= */
-
+/* --- HOVER EFFECT INTERACTIVE --- */
 .research-card:hover {
   transform: translateY(-8px);
   background: #FFFFFF;
@@ -330,7 +325,6 @@ h2 .highlight {
   background-color: #002D6B;
 }
 
-/* --- Animasi Pulse Keyframes --- */
 @keyframes pulse {
   0% { transform: scale(0.95); opacity: 1; }
   50% { transform: scale(1.15); opacity: 0.5; }
@@ -339,25 +333,13 @@ h2 .highlight {
 
 /* --- Responsif Layout --- */
 @media (max-width: 992px) {
-  .research-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 Kolom pada Tablet */
-    gap: 24px;
-  }
+  .research-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 
 @media (max-width: 768px) {
-  .journey-section {
-    padding: 80px 0;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-  .research-grid {
-    grid-template-columns: 1fr; /* 1 Kolom Penuh pada HP */
-    gap: 20px;
-  }
-  .research-card {
-    padding: 32px 24px;
-  }
+  .journey-section { padding: 80px 0; }
+  h2 { font-size: 2rem; }
+  .research-grid { grid-template-columns: 1fr; gap: 20px; }
+  .research-card { padding: 32px 24px; }
 }
 </style>

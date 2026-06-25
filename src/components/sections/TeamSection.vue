@@ -1,28 +1,25 @@
 <script setup>
+import { computed } from 'vue'
+import TeamDetail from '../../views/TeamDetail.vue'
+
 // Fungsi pembantu otomatis mengarah ke folder src/assets/images/
 const getImageUrl = (fileName) => {
   if (!fileName) return ''
   return new URL(`/src/assets/images/${fileName}`, import.meta.url).href
 }
 
-// Data Anggota Tim - Sekarang jauh lebih bersih, cukup tulis nama file gambarnya saja
+// Data Anggota Tim Lengkap (Bisa ditambah terus di sini)
 const coreTeam = [
-  { 
-    name: "Dr. Eddy Fadlyana, dr., Sp.P(K)., M.Kes", 
-    role: "Advisor", 
-    imageName: "DrEddy.png"
-  },
-  { 
-    name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM", 
-    role: "Advisor", 
-    imageName: "ProfKus.png" 
-  },
-  { 
-    name: "Dr. Rodman Tarigan, dr., Sp.P(K)., M.Kes", 
-    role: "Responsible/Chariman", 
-    imageName: "DrRodman.png"
-  }
+  { name: "Dr. Eddy Fadlyana, dr., Sp.P(K)., M.Kes", role: "Advisor", imageName: "DrEddy.png" },
+  { name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM", role: "Advisor", imageName: "ProfKus.png" },
+  { name: "Dr. Rodman Tarigan, dr., Sp.P(K)., M.Kes", role: "Responsible/Chairman", imageName: "DrRodman.png" },
+  { name: "Dr. Nama Anggota Baru 1, dr., Sp.A", role: "Co-Chairman", imageName: "default.png" },
+  { name: "Nama Anggota Baru 2, S.Kom", role: "Technical Lead", imageName: "default.png" },
+  { name: "Nama Anggota Baru 3, MBA", role: "Treasurer", imageName: "default.png" },
 ]
+
+// Hanya ambil 3 anggota pertama untuk di-highlight di Beranda
+const featuredTeam = computed(() => coreTeam.slice(0, 3))
 </script>
 
 <template>
@@ -38,7 +35,7 @@ const coreTeam = [
       <div class="team-grid">
         <div
           class="team-card"
-          v-for="member in coreTeam"
+          v-for="member in featuredTeam"
           :key="member.name"
         >
           <div class="avatar-wrapper">
@@ -63,11 +60,18 @@ const coreTeam = [
         </div>
       </div>
 
+      <div class="view-more-container">
+        <router-link to="/team" class="btn-view-team">
+          <span>See All Team Members</span>
+        </router-link>
+      </div>
+
     </div>
   </section>
 </template>
 
 <style scoped>
+/* ... Menggunakan CSS lama Anda ... */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 .team-section {
@@ -82,7 +86,6 @@ const coreTeam = [
   padding: 0 24px;
 }
 
-/* --- Header Gaya Makro --- */
 .section-header {
   text-align: center;
   display: flex;
@@ -118,14 +121,12 @@ h2 .highlight {
   border-radius: 2px;
 }
 
-/* --- STRUKTUR GRID 3 KOLOM SIMETRIS --- */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
 }
 
-/* --- Gaya Kartu Profil Premium --- */
 .team-card {
   background: #F8FAFC; 
   border: 1px solid rgba(0, 71, 165, 0.04);
@@ -139,7 +140,6 @@ h2 .highlight {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Wadah Komponen Avatar Bulat --- */
 .avatar-wrapper {
   position: relative;
   width: 130px; 
@@ -177,7 +177,6 @@ h2 .highlight {
   justify-content: center;
 }
 
-/* Cincin Orbit Luar Jalur Putar */
 .avatar-orbit-ring {
   position: absolute;
   top: -6px;
@@ -190,7 +189,6 @@ h2 .highlight {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Teks Informasi --- */
 .member-info {
   display: flex;
   flex-direction: column;
@@ -206,7 +204,6 @@ h2 .highlight {
   line-height: 1.4;
 }
 
-/* Badge Peran (Role) Berbentuk Pill Mewah */
 .role-badge {
   font-size: 0.78rem;
   color: #0047A5;
@@ -220,7 +217,6 @@ h2 .highlight {
   transition: all 0.3s ease;
 }
 
-/* --- EFEK HOVER INTERAKTIF --- */
 .team-card:hover {
   transform: translateY(-8px);
   background: #FFFFFF;
@@ -247,27 +243,49 @@ h2 .highlight {
   color: #FFFFFF;
 }
 
-/* --- RESPONSIF SCREEN LAYOUT --- */
+/* --- CSS TAMBAHAN UNTUK TOMBOL VIEW MORE --- */
+.view-more-container {
+  text-align: center;
+  margin-top: 56px;
+}
+
+.btn-view-team {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0047A5;
+  color: #FFFFFF;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 71, 165, 0.15);
+  transition: all 0.3s ease;
+}
+
+.btn-view-team svg {
+  transition: transform 0.3s ease;
+}
+
+.btn-view-team:hover {
+  background-color: #002D6B;
+  box-shadow: 0 12px 28px rgba(0, 45, 107, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-view-team:hover svg {
+  transform: translateX(4px);
+}
+
 @media (max-width: 992px) {
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 24px;
-  }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 
 @media (max-width: 768px) {
-  .team-section {
-    padding: 80px 0;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-  .team-grid {
-    grid-template-columns: 1fr; 
-    gap: 20px;
-  }
-  .team-card {
-    padding: 40px 24px;
-  }
+  .team-section { padding: 80px 0; }
+  h2 { font-size: 2rem; }
+  .team-grid { grid-template-columns: 1fr; gap: 20px; }
+  .team-card { padding: 40px 24px; }
 }
-</style>
+</style> 

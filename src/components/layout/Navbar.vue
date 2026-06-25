@@ -63,7 +63,7 @@ onUnmounted(() => {
         
         <div class="brand-text-block">
           <div class="main-brand-text">Clinical Research Unit</div>
-          <div class="sub-brand-text">RS HASAN SADIKIN / FK UNPAD</div>
+          <div class="sub-brand-text">Faculty of Medicine Universitas Padjadjaran</div>
         </div>
       </div>
 

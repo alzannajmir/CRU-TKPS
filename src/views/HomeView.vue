@@ -4,9 +4,9 @@
   <HeroSection />
   <AboutSection />
   <VisionMissionSection />
-  <HistorySection />
   <ServicesSection />
   <FacilitiesSection />
+  <HistorySection />
   <ResearchSection />
   <TeamSection />
   <PartnerSection />

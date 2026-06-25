@@ -20,7 +20,6 @@
 
       <p class="description">
         Faculty of Medicine Universitas Padjadjaran <br />
-        & Dr. Hasan Sadikin Hospital Bandung
       </p>
 
       <div class="btn-container">
