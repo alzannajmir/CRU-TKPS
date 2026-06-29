@@ -69,7 +69,7 @@
 </template>
 
 <script setup>
-import { projectsData } from '../data/projectData.js'
+import { projectsData } from '../data/ProjectData.js'
 // Jika menggunakan Vue Router asli, silakan aktifkan di bawah:
 // import { useRouter } from 'vue-router'
 // const router = useRouter()

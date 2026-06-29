@@ -1,0 +1,9 @@
+services:
+  cru-tkps-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cru-tkps-app
+    ports:
+      - "8090:80"
+    restart: unless-stopped

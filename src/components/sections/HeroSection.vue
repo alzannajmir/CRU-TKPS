@@ -190,7 +190,7 @@ button.btn-primary:hover svg {
     /* Mengubah arah gradien menjadi vertikal saat di tablet/HP agar teks di atas aman */
     background-image: 
       linear-gradient(to bottom, #FFFFFF 45%, rgba(255, 255, 255, 0.9) 70%, rgba(255, 255, 255, 0.6) 100%),
-      url('/src/assets/images/hero-bg.jpg');
+      url('/src/assets/images/hero-bg.jpeg');
   }
   h1 {
     font-size: 3rem;

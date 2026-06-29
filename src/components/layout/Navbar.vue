@@ -59,7 +59,7 @@ onUnmounted(() => {
       <div class="logo-wrapper">
         <img src="/src/assets/images/LOGOUNPAD.png" alt="Logo Unpad" class="nav-logo" />
         <div class="logo-divider"></div>
-        <img src="/src/assets/images/LOGOCRU.png" alt="Logo CRU" class="nav-logo" />
+        <img src="/src/assets/images/logoCRU.png" alt="Logo CRU" class="nav-logo" />
         
         <div class="brand-text-block">
           <div class="main-brand-text">Clinical Research Unit</div>
