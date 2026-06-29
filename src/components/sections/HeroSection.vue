@@ -1,17 +1,20 @@
 <template>
   <section class="hero">
-    <div class="bg-glow"></div>
-
-    <!-- <div class="hero-shape shape-top-left">
-      <img src="/src/assets/images/Shape.png" alt="Dekorasi Latar Belakang" />
+    <div class="glow-bg-container">
+      <div class="blur-glow glow-1"></div>
+      <div class="blur-glow glow-2"></div>
+      <div class="blur-glow glow-3"></div>
     </div>
-    
-    <div class="hero-shape shape-bottom-right">
-      <img src="/src/assets/images/Shape.png" alt="Dekorasi Latar Belakang" />
-    </div> -->
+
+    <div class="grid-overlay"></div>
 
     <div class="content">
-      <span class="sub-title">Clinical Research Unit</span>
+      <div class="badge-wrapper">
+        <span class="sub-title">
+          <span class="pulse-ring"></span>
+          Clinical Research Unit
+        </span>
+      </div>
 
       <h1>
         Growth & Development <br />
@@ -19,13 +22,15 @@
       </h1>
 
       <p class="description">
-        Faculty of Medicine Universitas Padjadjaran <br />
+        Faculty of Medicine Universitas Padjadjaran
       </p>
 
       <div class="btn-container">
         <button class="btn-primary">
-          Explore Research
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          <span>Explore Research</span>
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </button>
       </div>
     </div>
@@ -33,75 +38,83 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 .hero {
   position: relative;
   height: 100vh; 
-  min-height: 650px;
+  min-height: 700px;
   display: flex;
   align-items: center;
   color: #002D6B; 
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   padding-top: 80px; 
-
-  /* --- PENGATURAN BACKGROUND BARU --- */
-  /* Silakan ganti path URL di bawah dengan gambar bertema medis/fasilitas lab Anda */
-  background-image: 
-    linear-gradient(to right, #FFFFFF 35%, rgba(255, 255, 255, 0.85) 60%, rgba(255, 255, 255, 0.4) 100%),
-    url('/src/assets/images/hero-bg.jpeg'); 
-  background-size: cover;
-  background-position: center right;
-  background-repeat: no-repeat;
+  /* Gradasi dasar super bersih menyeimbangkan pendaran warna */
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%);
 }
 
-/* Pendaran warna radial latar belakang (dibuat sedikit lebih kontras agar tetap terlihat) */
-.bg-glow {
+/* --- GLOWING BACKGROUND EFFECT --- */
+.glow-bg-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  height: 900px;
-  background: radial-gradient(circle, rgba(0, 71, 165, 0.04) 0%, rgba(255, 199, 0, 0.02) 60%, transparent 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* --- PENGATURAN STRUKTUR SHAPE --- */
-.hero-shape {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-  user-select: none;
-}
-
-.hero-shape img {
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  opacity: 0.12; 
-  filter: blur(1px); 
+  z-index: 1;
+  pointer-events: none;
 }
 
-.shape-top-left {
-  top: -120px;
-  left: -120px;
-  width: 450px;
-  height: 450px;
-  transform: rotate(-15deg); 
+.blur-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
 }
 
-.shape-bottom-right {
-  bottom: -150px;
-  right: -150px;
+/* Pendaran Biru Utama di Sisi Kanan Atas */
+.glow-1 {
+  top: -10%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 82, 204, 0.12) 0%, rgba(0, 71, 165, 0.02) 70%);
+}
+
+/* Pendaran Kuning Emas Lembut di Bagian Tengah */
+.glow-2 {
+  top: 40%;
+  right: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 199, 0, 0.06) 0%, rgba(255, 199, 0, 0) 70%);
+}
+
+/* Pendaran Teal/Cyan untuk Kesan Labs/Medis di Kanan Bawah */
+.glow-3 {
+  bottom: -10%;
+  right: -10%;
   width: 550px;
   height: 550px;
-  transform: rotate(25deg);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0) 70%);
 }
 
-/* --- Konten dan Tipografi --- */
+/* --- GRID OVERLAY (Efek Pola Garis Riset Modern) --- */
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 71, 165, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 71, 165, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- KONTEN & TIPOGRAFI --- */
 .content {
   max-width: 1200px;
   width: 100%;
@@ -111,21 +124,44 @@
   z-index: 2; 
 }
 
+.badge-wrapper {
+  margin-bottom: 28px;
+}
+
 .sub-title {
-  display: inline-block;
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: #0052CC; 
-  margin-bottom: 20px;
-  background: rgba(0, 82, 204, 0.08); /* Sedikit ditingkatkan agar lebih terbaca di atas background */
+  background: rgba(0, 82, 204, 0.06); 
+  border: 1px solid rgba(0, 82, 204, 0.08);
   padding: 8px 20px;
   border-radius: 50px;
 }
 
+/* Efek lingkaran berkedip/live pada badge */
+.pulse-ring {
+  width: 6px;
+  height: 6px;
+  background-color: #0052CC;
+  border-radius: 50%;
+  position: relative;
+}
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border-radius: 50%;
+  background-color: #0052CC;
+  animation: badge-pulse 2s infinite ease-out;
+}
+
 h1 {
-  font-size: 3.8rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.15;
   max-width: 850px;
@@ -136,89 +172,90 @@ h1 {
 
 .highlight {
   color: #0052CC;
-  background: linear-gradient(120deg, rgba(255, 199, 0, 0.3) 0%, rgba(255, 199, 0, 0.3) 100%);
-  padding: 0 8px;
+  position: relative;
+  z-index: 1;
+  padding: 0 4px;
+}
+
+/* Underline bergaya marker mewah di bawah teks highlight */
+.highlight::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  width: 100%;
+  height: 12px;
+  background-color: rgba(255, 199, 0, 0.35);
+  z-index: -1;
   border-radius: 4px;
 }
 
 .description {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   line-height: 1.6;
   max-width: 650px;
-  color: #2D3748; /* Dibuat sedikit lebih gelap dari #4A5568 agar ekstra kontras */
-  margin: 0 0 44px 0;
-  font-weight: 600; /* Ditingkatkan ke 600 agar tipografi kokoh di atas gambar */
+  color: #4A5568;
+  margin: 0 0 48px 0;
+  font-weight: 500;
 }
 
-.btn-container {
-  display: flex;
-}
-
+/* --- BUTTON DENGAN EFEK ELEGAN --- */
 button.btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   background: #002D6B; 
   color: #FFFFFF; 
   border: none;
-  padding: 18px 36px;
-  border-radius: 14px;
+  padding: 14px 14px 14px 32px; /* Padding kiri lebih besar untuk teks */
+  border-radius: 100px; /* Fully Rounded Pill */
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 45, 107, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(0, 45, 107, 0.12);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.icon-circle {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 button.btn-primary:hover {
-  background: #0047A5;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 45, 107, 0.25);
+  background: #0052CC;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px rgba(0, 82, 204, 0.2);
 }
 
-button.btn-primary svg {
-  transition: transform 0.3s ease;
+button.btn-primary:hover .icon-circle {
+  background-color: #FFFFFF;
+  color: #002D6B;
+  transform: rotate(-45deg); /* Rotasi panah estetis saat di-hover */
 }
 
-button.btn-primary:hover svg {
-  transform: translateX(4px);
+/* --- ANIMASI KEYFRAMES --- */
+@keyframes badge-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
 }
 
-/* --- Penataan Responsif --- */
+/* --- PENATAAN RESPONSIF --- */
 @media (max-width: 992px) {
-  .hero {
-    /* Mengubah arah gradien menjadi vertikal saat di tablet/HP agar teks di atas aman */
-    background-image: 
-      linear-gradient(to bottom, #FFFFFF 45%, rgba(255, 255, 255, 0.9) 70%, rgba(255, 255, 255, 0.6) 100%),
-      url('/src/assets/images/hero-bg.jpg');
-  }
-  h1 {
-    font-size: 3rem;
-  }
-  .shape-top-left {
-    width: 350px;
-    height: 350px;
-  }
-  .shape-bottom-right {
-    width: 400px;
-    height: 400px;
-  }
+  h1 { font-size: 3.2rem; letter-spacing: -1px; }
+  .blur-glow { width: 400px; height: 400px; }
 }
 
 @media (max-width: 768px) {
-  .hero {
-    height: auto;
-    padding: 140px 0 100px 0;
-  }
-  h1 {
-    font-size: 2.3rem;
-    letter-spacing: -0.5px;
-  }
-  .description {
-    font-size: 1.1rem;
-  }
-  .hero-shape img {
-    opacity: 0.04;
-  }
+  .hero { height: auto; padding: 160px 0 120px 0; }
+  h1 { font-size: 2.5rem; letter-spacing: -0.5px; }
+  .description { font-size: 1.1rem; margin-bottom: 36px; }
+  button.btn-primary { padding: 12px 12px 12px 28px; font-size: 15px; }
+  .icon-circle { width: 38px; height: 38px; }
 }
-</style>
+</style> 
