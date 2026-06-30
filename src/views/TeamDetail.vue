@@ -111,10 +111,11 @@ const coreTeam = ref([
     role: "Researcher",
     imageName: "dr.fariza.jpeg",
   },
+
   {
-    name: "dr. Iclas",
+    name: "dr. Swedis",
     role: "Researcher",
-    imageName: "dr.iclas.jpeg",
+    imageName: "dr.swedis.jpeg",
   },
   {
     name: "dr. Safira",
