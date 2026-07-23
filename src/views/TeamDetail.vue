@@ -1,8 +1,6 @@
 <template>
-  <navbar />
-
+    <Navbar />
   <section id="team" class="TeamDetail">
-    <!-- Decorative background elements -->
     <div class="bg-glow-container">
       <div class="blur-glow glow-1"></div>
       <div class="blur-glow glow-2"></div>
@@ -13,42 +11,13 @@
     <div class="animated-ring ring-2"></div>
 
     <div class="container">
-      <!-- Back navigation -->
-      <div class="back-nav">
-        <router-link to="/" class="btn-back">
-          <div class="btn-back-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-          </div>
-          <span>Back to Home</span>
-        </router-link>
-      </div>
-
-      <!-- Section header -->
       <div class="section-header">
-        <span class="sub-title">
-          <span class="pulse-dot"></span>
-          Our Experts
-        </span>
-        <h2>Meet Our <span class="highlight">Core Team</span></h2>
-        <p class="section-desc">
+        <!--  <h2>Meet Our <span class="highlight">Core Team</span></h2> -->
+        <!-- <p class="section-desc">
           A dedicated team of medical professionals committed to advancing clinical research and pediatric care.
-        </p>
+        </p> -->
       </div>
 
-      <!-- Team grid -->
       <div class="team-grid">
         <div
           class="team-card"
@@ -56,7 +25,6 @@
           :key="index"
           :style="{ '--delay': index * 0.08 + 's' }"
         >
-          <!-- Photo area -->
           <div class="card-image-wrapper">
             <img
               :src="getImageUrl(member.imageName)"
@@ -66,13 +34,11 @@
             />
             <div class="image-overlay"></div>
 
-            <!-- Role badge on image -->
             <div class="role-pill" v-if="member.role">
               {{ member.role }}
             </div>
           </div>
 
-          <!-- Info area -->
           <div class="card-body">
             <h3 class="member-name">{{ member.name }}</h3>
             <div class="card-bottom">
@@ -88,15 +54,14 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <Footer />
+</section>
+<Footer />
 </template>
 
 <script setup>
-import { ref } from "vue";
-import navbar from "../components/layout/Navbar.vue";
+import Navbar from "../components/layout/Navbar.vue";
 import Footer from "../components/layout/Footer.vue";
+import { ref } from "vue";
 
 const images = import.meta.glob("../assets/images/team/*", {
   eager: true,
@@ -105,55 +70,54 @@ const images = import.meta.glob("../assets/images/team/*", {
 
 const coreTeam = ref([
   {
-    name: "Dr. Eddy Fadlyana, dr., Sp.P(K)., M.Kes",
-    role: "Advisor",
-    imageName: "DrEddy.png",
+    name: "Siti Oktaviani Mawaddah",
+    role: "Member of Clinical Research Unit",
+    imageName: "bu_siti.png",
   },
   {
-    name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM",
-    role: "Advisor",
-    imageName: "ProfKus.png",
+    name: "Novriyandi",
+    role: "Member of Clinical Research Unit",
+    imageName: "pa_novri.png",
   },
   {
-    name: "Dr. Rodman Tarigan, dr., Sp.P(K)., M.Kes",
-    role: "Responsible / Chairman",
-    imageName: "dr.rodman.jpeg",
+    name: "Astri Nadia Hidayat, dr.",
+    role: "Member of Clinical Research Unit",
+    imageName: "dr.astri.png",
   },
   {
-    name: "dr. Astri",
-    role: "Co-Chairman",
-    imageName: "dr.astri.jpeg",
+    name: "Khairunnisa Puspatriani",
+    role: "Member of Clinical Research Unit",
+    imageName: "tehninis.png",
   },
   {
-    name: "dr. Fariza",
-    role: "Researcher",
-    imageName: "dr.fariza.jpeg",
+    name: "Farizah Nuraini Wulandari, dr.",
+    role: "Member of Clinical Research Unit",
+    imageName: "dr.fariza.png",
   },
-
   {
-    name: "dr. Swedis",
-    role: "Researcher",
+    name: "Anisa Swediana Salamah, dr.",
+    role: "Member of Clinical Research Unit",
     imageName: "dr.swedis.jpeg",
   },
   {
-    name: "dr. Safira",
-    role: "Researcher",
-    imageName: "dr.safira.jpeg",
+    name: "Keke krishna",
+    role: "Member Clinical Research Unit",
+    imageName: "tehkekeu.png",
   },
   {
-    name: "Teh Kekeu",
-    role: "Administration",
-    imageName: "tehkekeu.jpeg",
+    name: "Safira Atya Iskandar, dr.",
+    role: "Member of Clinical Research Unit",
+    imageName: "dr.safira.png",
   },
   {
-    name: "Teh Ninis",
-    role: "",
-    imageName: "tehninis.jpeg",
+    name: "Ichlas Afif, dr.",
+    role: "Member of Clinical Research Unit",
+    imageName: "dr.iclas.png",
   },
   {
-    name: "Alzan",
-    role: "",
-    imageName: "alzan.jpeg",
+    name: "Alzan Najmi Ramadhan",
+    role: "Member of Clinical Research Unit",
+    imageName: "alzan.png",
   },
 ]);
 
@@ -172,9 +136,6 @@ const setDefaultImage = (event) => {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
-/* ======================================
-   PAGE LAYOUT
-   ====================================== */
 .TeamDetail {
   background: linear-gradient(135deg, #FAFBFF 0%, #F4F7FC 50%, #EFF3FA 100%);
   padding: 0 0 140px 0;
@@ -192,9 +153,6 @@ const setDefaultImage = (event) => {
   z-index: 3;
 }
 
-/* ======================================
-   BACKGROUND DECORATIONS
-   ====================================== */
 .bg-glow-container {
   position: absolute;
   top: 0;
@@ -280,97 +238,13 @@ const setDefaultImage = (event) => {
   100% { transform: rotate(360deg); }
 }
 
-/* ======================================
-   BACK NAVIGATION
-   ====================================== */
-.back-nav {
-  display: flex;
-  align-items: center;
-  padding-top: 110px;
-  margin-bottom: 48px;
-}
-
-.btn-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #0052CC;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-back-icon {
-  width: 36px;
-  height: 36px;
-  background: rgba(0, 82, 204, 0.06);
-  border: 1px solid rgba(0, 82, 204, 0.08);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-back:hover {
-  color: #002D6B;
-}
-
-.btn-back:hover .btn-back-icon {
-  background: #0052CC;
-  border-color: #0052CC;
-  color: #FFFFFF;
-  transform: translateX(-4px);
-}
-
-/* ======================================
-   SECTION HEADER
-   ====================================== */
 .section-header {
+  margin-top: 100px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 64px;
-}
-
-.sub-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #0052CC;
-  background: rgba(0, 82, 204, 0.06);
-  border: 1px solid rgba(0, 82, 204, 0.08);
-  padding: 8px 20px;
-  border-radius: 50px;
-  margin-bottom: 20px;
-}
-
-.pulse-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #0052CC;
-  border-radius: 50%;
-  position: relative;
-}
-
-.pulse-dot::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  border-radius: 50%;
-  background-color: #0052CC;
-  animation: dot-pulse 2s infinite ease-out;
-}
-
-@keyframes dot-pulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(3); opacity: 0; }
 }
 
 h2 {
@@ -418,9 +292,6 @@ h2 .highlight::after {
   gap: 24px;
 }
 
-/* ======================================
-   TEAM CARD — Premium Glassmorphism
-   ====================================== */
 .team-card {
   position: relative;
   display: flex;
@@ -455,27 +326,35 @@ h2 .highlight::after {
 }
 
 /* ======================================
-   CARD IMAGE
+   CARD IMAGE (PENYESUAIAN ZOOM FOTO)
    ====================================== */
 .card-image-wrapper {
   position: relative;
   width: 100%;
   height: 320px;
   overflow: hidden;
-  background: linear-gradient(135deg, #E8EEF6 0%, #D6DEE9 100%);
+  /* Memberikan padding dalam agar foto otomatis mengecil/menjauh */
+  padding: 16px; 
+  /* Menggunakan warna background yang bersih & profesional medis */
+  background: linear-gradient(135deg, #F0F4FA 0%, #E2EAF4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .member-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  /* Mengubah ke 'contain' agar seluruh proporsi foto masuk tanpa terpotong dekat wajah */
+  object-fit: contain; 
+  object-position: center bottom;
+  border-radius: 12px; /* Memberikan sudut membulat manis pada foto di dalamnya */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
 }
 
 .team-card:hover .member-photo {
-  transform: scale(1.06);
+  transform: scale(1.04); /* Zoom halus saat di-hover */
 }
 
 /* Gradient overlay on bottom of image */
@@ -484,22 +363,18 @@ h2 .highlight::after {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50%;
-  background: linear-gradient(to top, rgba(0, 30, 70, 0.4) 0%, transparent 100%);
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 45, 107, 0.03) 0%, transparent 100%);
   pointer-events: none;
   transition: opacity 0.4s ease;
-}
-
-.team-card:hover .image-overlay {
-  opacity: 0.7;
 }
 
 /* Role pill badge on image */
 .role-pill {
   position: absolute;
-  top: 16px;
-  left: 16px;
-  background: rgba(255, 255, 255, 0.9);
+  top: 24px;
+  left: 24px;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #0052CC;
@@ -512,6 +387,7 @@ h2 .highlight::after {
   border: 1px solid rgba(0, 82, 204, 0.08);
   z-index: 5;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .team-card:hover .role-pill {
@@ -530,6 +406,7 @@ h2 .highlight::after {
   flex-grow: 1;
   justify-content: space-between;
   gap: 14px;
+  background: #ffffff;
 }
 
 .member-name {
@@ -557,7 +434,7 @@ h2 .highlight::after {
 }
 
 .member-department svg {
-  color: #CBD5E1;
+  color: #0052CC;
   flex-shrink: 0;
 }
 
@@ -594,11 +471,6 @@ h2 .highlight::after {
     padding-bottom: 100px;
   }
 
-  .back-nav {
-    padding-top: 90px;
-    margin-bottom: 36px;
-  }
-
   .section-header {
     margin-bottom: 40px;
   }
@@ -623,10 +495,6 @@ h2 .highlight::after {
 
   .card-image-wrapper {
     height: 340px;
-  }
-
-  .sub-title {
-    font-size: 11px;
   }
 }
 </style>

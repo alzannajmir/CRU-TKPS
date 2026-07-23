@@ -5,48 +5,7 @@
     <div class="glow-shape shape-glow-blue"></div>
 
     <div class="container">
-      <div class="dashboard-header-nav">
-        <div class="back-nav">
-          <a href="/" class="btn-back">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            <span>Back to Home</span>
-          </a>
-        </div>
-        <div class="date-badge">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-          <span
-            >Data per: <strong>{{ dashboardData.tanggal }}</strong></span
-          >
-        </div>
-      </div>
+      <div class="dashboard-header-nav"></div>
 
       <div class="main-header">
         <span class="sub-title">Research Activity Dashboard</span>
@@ -56,19 +15,44 @@
 
       <div class="dashboard-layout">
         <div class="metrics-block">
-          <h3 class="block-title">Subject Recruitment Funnel</h3>
+          <h3 class="block-title">Subject Recruitment</h3>
 
+          <div class="date-badge">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Data per: <strong>{{ dashboardData.tanggal }}</strong></span>
+          </div>
+          
           <div class="metrics-grid">
+            <!-- Va Card -->
             <div class="metric-card highlight-blue">
               <div class="card-icon">Va</div>
               <div class="card-info">
                 <span class="label">Pre-IC Stage</span>
                 <h4 class="value">
-                  {{ dashboardData.preIC }} <span class="unit">Subjek</span>
+                  {{ dashboardData.preIC.total }} <span class="unit">Subjek</span>
                 </h4>
+                <p class="note-text location-detail">
+                  *{{ dashboardData.preIC.detail }}
+                </p>
               </div>
             </div>
 
+            <!-- V0 Card -->
             <div class="metric-card">
               <div class="card-icon">V0</div>
               <div class="card-info">
@@ -83,6 +67,7 @@
               </div>
             </div>
 
+            <!-- Prodia Card -->
             <div class="metric-card">
               <div class="card-icon">Lab</div>
               <div class="card-info">
@@ -92,35 +77,55 @@
                   <span class="unit">Sampel</span>
                 </h4>
                 <p class="note-text">
-                  *{{ dashboardData.kirimProdia.catatan }}
+                  *{{ dashboardData.kirimProdia.catatan }}<br/>
+                  <strong>*{{ dashboardData.kirimProdia.catatanV1b }}</strong>
                 </p>
               </div>
             </div>
 
+            <!-- V1 Card -->
             <div class="metric-card success-light">
               <div class="card-icon">V1</div>
               <div class="card-info">
                 <span class="label">Kriteria Inklusi</span>
                 <h4 class="value text-success">
-                  {{ dashboardData.inklusi }} <span class="unit">Subjek</span>
+                  {{ dashboardData.inklusi.total }} <span class="unit">Subjek</span>
                 </h4>
+                <p class="note-text location-detail text-success">
+                  *{{ dashboardData.inklusi.detail }}
+                </p>
               </div>
             </div>
           </div>
 
-          <div class="target-card-banner">
-            <div class="banner-content">
-              <h5>Visit V1b Completion</h5>
-              <p>
-                Subjek yang telah berhasil menyelesaikan seluruh rangkaian visit
-                V1b.
-              </p>
+          <!-- Banners Area (V1b & V2) -->
+          <div class="banners-container">
+            <!-- Visit V1b Banner -->
+            <div class="target-card-banner">
+              <div class="banner-content">
+                <h5>Visit V1b Completion</h5>
+                <p>
+                  Subjek yang telah berhasil menyelesaikan seluruh rangkaian visit V1b.
+                </p>
+              </div>
+              <div class="banner-value">
+                <span class="big-number">{{ dashboardData.selesaiV1b }}</span>
+                <span class="sub-number">/{{ dashboardData.inklusi.total }} Inklusi</span>
+              </div>
             </div>
-            <div class="banner-value">
-              <span class="big-number">{{ dashboardData.selesaiV1b }}</span>
-              <span class="sub-number"
-                >/{{ dashboardData.inklusi }} Subjek Inklusi</span
-              >
+
+            <!-- Visit V2 Banner (Baru) -->
+            <div class="target-card-banner highlight-gold">
+              <div class="banner-content">
+                <h5>Visit V2 Completion</h5>
+                <p>
+                  Subjek yang telah berhasil mencapai dan menyelesaikan visit tahap V2.
+                </p>
+              </div>
+              <div class="banner-value">
+                <span class="big-number">{{ dashboardData.selesaiV2 }}</span>
+                <span class="sub-number">/{{ dashboardData.inklusi.total }} Inklusi</span>
+              </div>
             </div>
           </div>
         </div>
@@ -133,14 +138,18 @@
               <div class="progress-ring-container">
                 <svg class="progress-ring" width="160" height="160">
                   <circle class="ring-bg" cx="80" cy="80" r="70" />
+
+                  <!-- Lingkaran Inklusi -->
                   <circle
                     class="ring-fill fill-va"
                     cx="80"
                     cy="80"
                     r="70"
                     stroke-dasharray="440"
-                    :stroke-dashoffset="440 - (440 * 100) / 100"
+                    :stroke-dashoffset="440 - 440 * (dashboardData.inklusi.total / dashboardData.preIC.total)"
                   />
+
+                  <!-- Lingkaran Selesai V1b -->
                   <circle
                     class="ring-fill fill-v1"
                     cx="80"
@@ -148,43 +157,40 @@
                     r="70"
                     stroke-dasharray="440"
                     :stroke-dashoffset="
-                      440 -
-                      (440 *
-                        (dashboardData.inklusi / dashboardData.preIC) *
-                        100) /
-                        100
+                      440 - 440 * (dashboardData.selesaiV1b / dashboardData.preIC.total)
                     "
                   />
                 </svg>
+
                 <div class="ring-center-text">
-                  <span class="percentage"
-                    >{{
-                      Math.round(
-                        (dashboardData.selesaiV1b / dashboardData.inklusi) *
-                          100,
-                      )
-                    }}%</span
-                  >
-                  <span class="text-label">V1b Rate</span>
+                  <span class="percentage">
+                    {{ Math.round((dashboardData.inklusi.total / dashboardData.preIC.total) * 100) }}%
+                  </span>
+                  <span class="text-label">Inclusion Rate</span>
                 </div>
               </div>
             </div>
 
             <div class="legend-list">
               <div class="legend-item">
-                <span class="dot dot-va"></span>
+                <span class="dot dot-preic"></span>
                 <span class="name">Total Pre-IC (Va)</span>
-                <span class="stat">{{ dashboardData.preIC }}</span>
+                <span class="stat">{{ dashboardData.preIC.total }}</span>
               </div>
               <div class="legend-item">
-                <span class="dot dot-v0"></span>
+                <span class="dot dot-va"></span>
                 <span class="name">Inklusi Masuk (V1)</span>
-                <span class="stat">{{ dashboardData.inklusi }}</span>
+                <span class="stat">{{ dashboardData.inklusi.total }}</span>
               </div>
               <div class="legend-item">
                 <span class="dot dot-v1b"></span>
                 <span class="name">Selesai Visit V1b</span>
                 <span class="stat">{{ dashboardData.selesaiV1b }}</span>
+              </div>
+              <div class="legend-item">
+                <span class="dot dot-v2"></span>
+                <span class="name">Selesai Visit V2</span>
+                <span class="stat">{{ dashboardData.selesaiV2 }}</span>
               </div>
             </div>
           </div>
@@ -201,45 +207,59 @@ import { ref } from "vue";
 import navbar from "../components/layout/Navbar.vue";
 import Footer from "../components/layout/Footer.vue";
 
-// Data rekap tersentralisasi agar mudah diubah sewaktu-waktu
+// Data rekap tersentralisasi terupdate per 20 Juli 2026
 const dashboardData = ref({
   judul: "Rekap Rekrut Subjek Hexa 0125",
-  tanggal: "24/JUNI/2026",
-  preIC: 59,
+  tanggal: "20/JULI/2026",
+  preIC: {
+    total: 89,
+    detail: "81 Kiwari, 6 PMB Cintia, 2 PMB Dewi",
+  },
   ambilDarah: {
-    total: 58,
-    catatan: "1 subjek tidak keluar darah",
+    total: 86,
+    catatan: "1 subjek tidak keluar darah, 2 gagal skrining",
   },
   kirimProdia: {
-    total: 51,
-    catatan: "13 eksklusi: 4 sampel dikirim, 9 tidak",
+    total: 77,
+    catatan: "19 eksklusi: 8 sampel dikirim, 11 tidak",
+    catatanV1b: "Visit V1b: 40 sampel",
   },
-  inklusi: 44,
-  selesaiV1b: 15,
+  inklusi: {
+    total: 70,
+    detail: "64 Kiwari, 4 PMB Cintia, 2 PMB Dewi",
+  },
+  selesaiV1b: 40,
+  selesaiV2: 9,
 });
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
-.research-activity-section {
+.research-activity,
+.research-activity * {
+  box-sizing: border-box;
+}
+
+.research-activity {
   background-color: #f8fafc;
   padding: 40px 0 100px 0;
   font-family: "Plus Jakarta Sans", sans-serif;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   min-height: 80vh;
+  width: 100%;
 }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: auto;
   padding: 0 24px;
   position: relative;
   z-index: 3;
 }
 
-/* Glow Background effect */
 .glow-shape {
   position: absolute;
   pointer-events: none;
@@ -247,7 +267,8 @@ const dashboardData = ref({
   z-index: 1;
 }
 .shape-glow-blue {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 500px;
   background: radial-gradient(
     circle,
@@ -259,52 +280,38 @@ const dashboardData = ref({
   filter: blur(50px);
 }
 
-/* Header Top Navigation */
 .dashboard-header-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
-.btn-back {
+
+.date-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #0047a5;
-  text-decoration: none;
-  font-weight: 700;
-  transition:
-    color 0.2s,
-    transform 0.2s;
-}
-.btn-back:hover {
-  color: #002d6b;
-  transform: translateX(-4px);
-}
-
-.date-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #ffffff;
   padding: 8px 16px;
   border-radius: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  font-size: 0.85rem;
+  font: 0.85rem sans-serif;
   color: #64748b;
+  background: #fff;
   border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px #0000000a;
+  margin-bottom: 25px;
 }
 .date-badge svg {
   color: #0047a5;
+  flex-shrink: 0;
 }
 
-/* Section Title */
 .main-header {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 }
 .sub-title {
+  margin-top: 50px;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -325,15 +332,14 @@ h2 {
   border-radius: 2px;
 }
 
-/* Dashboard Layout Grid */
 .dashboard-layout {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
   align-items: start;
+  width: 100%;
 }
 
-/* Metrics Block Styles */
 .block-title {
   font-size: 1.15rem;
   color: #1e293b;
@@ -343,19 +349,20 @@ h2 {
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 16px;
   margin-bottom: 24px;
 }
 
 .metric-card {
   background-color: #ffffff;
   border-radius: 16px;
-  padding: 20px;
+  padding: 16px;
   border: 1px solid #e2e8f0;
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: flex-start;
   box-shadow: 0 4px 12px rgba(0, 45, 107, 0.02);
+  min-width: 0;
 }
 .metric-card.highlight-blue {
   border-left: 4px solid #0047a5;
@@ -389,6 +396,7 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0;
 }
 .card-info .label {
   font-size: 0.8rem;
@@ -396,15 +404,18 @@ h2 {
   color: #94a3b8;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card-info .value {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #002d6b;
   font-weight: 700;
   margin: 4px 0;
 }
 .card-info .unit {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: #64748b;
 }
@@ -412,43 +423,67 @@ h2 {
   font-size: 0.75rem;
   color: #64748b;
   margin: 4px 0 0 0;
-  line-height: 1.3;
+  line-height: 1.4;
   font-weight: 500;
+  word-break: break-word;
+}
+.location-detail {
+  color: #475569;
+  font-style: italic;
 }
 .text-danger {
   color: #ef4444;
 }
 
-/* Banner Target Utama */
+/* Banners Container & Layout */
+.banners-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
 .target-card-banner {
   background: linear-gradient(135deg, #0047a5 0%, #002d6b 100%);
   border-radius: 16px;
-  padding: 24px;
+  padding: 20px 24px;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 10px 25px rgba(0, 71, 165, 0.15);
+  width: 100%;
+}
+
+/* Banner Variasi Warna Khusus V2 */
+.target-card-banner.highlight-gold {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-left: 5px solid #ffc700;
+}
+
+.banner-content {
+  min-width: 0;
 }
 .banner-content h5 {
   font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 .banner-content p {
-  font-size: 0.88rem;
-  color: #e2e8f0;
+  font-size: 0.85rem;
+  color: #cbd5e1;
   margin: 0;
-  max-width: 340px;
+  max-width: 380px;
   line-height: 1.4;
 }
 .banner-value {
   text-align: right;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 .banner-value .big-number {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 700;
   line-height: 1;
   color: #ffc700;
@@ -460,13 +495,14 @@ h2 {
   margin-top: 4px;
 }
 
-/* Visualization Card Style */
+/* Chart Block */
 .chart-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
-  padding: 28px;
+  padding: 24px;
   box-shadow: 0 4px 16px rgba(0, 45, 107, 0.02);
+  width: 100%;
 }
 .chart-card h3 {
   font-size: 1.1rem;
@@ -500,7 +536,7 @@ h2 {
   transition: stroke-dashoffset 0.5s ease;
 }
 .fill-va {
-  stroke: rgba(0, 71, 165, 0.1);
+  stroke: rgba(0, 71, 165, 0.15);
 }
 .fill-v1 {
   stroke: #0047a5;
@@ -524,13 +560,12 @@ h2 {
   line-height: 1.1;
 }
 .ring-center-text .text-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #94a3b8;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-/* Legend Styles */
 .legend-list {
   display: flex;
   flex-direction: column;
@@ -552,14 +587,17 @@ h2 {
   margin-right: 12px;
   flex-shrink: 0;
 }
-.dot-va {
-  background-color: rgba(0, 71, 165, 0.3);
+.dot-preic {
+  background-color: #cbd5e1;
 }
-.dot-v0 {
-  background-color: #64748b;
+.dot-va {
+  background-color: rgba(0, 71, 165, 0.4);
 }
 .dot-v1b {
   background-color: #0047a5;
+}
+.dot-v2 {
+  background-color: #ffc700;
 }
 .legend-item .name {
   flex-grow: 1;
@@ -569,14 +607,17 @@ h2 {
   color: #1e293b;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 992px) {
+@media (max-width: 1150px) {
   .dashboard-layout {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 }
+
 @media (max-width: 576px) {
+  .container {
+    padding: 0 16px;
+  }
   .metrics-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -591,6 +632,9 @@ h2 {
   }
   h2 {
     font-size: 1.6rem;
+  }
+  .chart-card {
+    padding: 20px;
   }
 }
 </style>

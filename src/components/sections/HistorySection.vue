@@ -33,7 +33,7 @@ const ongoingResearch = [
       
       <div class="section-header">
         <span class="sub-title">Clinical Trials</span>
-        <h2>Planned Research <span class="highlight">Activity</span></h2>
+        <h2> Research <span class="highlight">Activity</span></h2>
         <div class="accent-line"></div>
       </div>
 

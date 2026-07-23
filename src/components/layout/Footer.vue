@@ -10,7 +10,7 @@
         <p class="footer-institution">
           Clinical Research Unit Growth & Development Social Pediatrics (TKPS)
           <span class="bullet-separator">•</span> 
-          Faculty of Medicine Universitas Padjadjaran — RSHS Bandung
+          Faculty of Medicine Universitas Padjadjaran
         </p>
         
         <!-- Baris Hak Cipta -->

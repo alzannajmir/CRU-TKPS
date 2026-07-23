@@ -20,7 +20,6 @@
           </div>
           <h3>Research in Child Growth & Development</h3>
           <p>Comprehensive studies focusing on early detection, pediatric monitoring, and optimal developmental milestones.</p>
-          <span class="learn-more">Read details <span class="arrow">→</span></span>
         </div>
 
         <!-- Kartu 2 -->
@@ -31,7 +30,6 @@
           </div>
           <h3>Community-Based Research</h3>
           <p>Field-driven healthcare research integrated with social pediatrics to drive impactful public policies.</p>
-          <span class="learn-more">Read details <span class="arrow">→</span></span>
         </div>
 
         <!-- Kartu 3 -->
@@ -42,7 +40,6 @@
           </div>
           <h3>Vaccine Clinical Trials</h3>
           <p>High-standard clinical assessment and product evaluations adhering strictly to rigorous ICH-GCP protocols.</p>
-          <span class="learn-more">Read details <span class="arrow">→</span></span>
         </div>
 
       </div>
