@@ -19,7 +19,7 @@
           <!-- Wrapper Logo Latar Belakang -->
           <div class="title-logo-bg">
             <img
-              src="../../assets/images/LOGOCRU.png"
+              src="../../assets/images/logoCRU.png"
               alt="Logo CRU Background"
               class="logo-watermark"
             />
