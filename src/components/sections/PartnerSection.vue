@@ -6,14 +6,14 @@ const getImageUrl = (name) => {
 
 // Penggabungan semua data partner menjadi satu kesatuan
 const allPartners = [
-  { name: "WHO", logo: getImageUrl("logoWho.png") },
-  { name: "SINOVAC Biotech Ltd.", logo: getImageUrl("logoSinovac.png") },
-  { name: "MCRI", logo: getImageUrl("logoMcri.jpg") },
-  { name: "Minahai", logo: getImageUrl("logoMinhai.jpg") },
-  { name: "Anhui Zifei", logo: getImageUrl("logoZhifei.png") },
-  { name: "Sanofi Pasteur", logo: getImageUrl("logoSanofi.png") },
-  { name: "Bio Farma", logo: getImageUrl("logoBiofarma.png") },
-  { name: "Prodia", logo: getImageUrl("logoProdia.png") }
+  { name: "World Health Organization", logo: getImageUrl("logoWho.png") },
+  { name: "SINOVAC Biotech Ltd. Tiongkok", logo: getImageUrl("logoSinovac.png") },
+  { name: "MCRI Murdoch Children's Research Institute Autralia", logo: getImageUrl("logoMcri.jpg") },
+  { name: "Minhai Biotechnology Tiongkok", logo: getImageUrl("logoMinhai.jpg") },
+  { name: "Anhui Zifei Biopharmaceutical Tiongkok", logo: getImageUrl("logoZhifei.png") },
+  { name: "Sanofi Pasteur, Indonesia", logo: getImageUrl("logoSanofi.png") },
+  { name: "Bio Farma, Indonesia", logo: getImageUrl("logoBiofarma.png") },
+  { name: "Laboratorium Prodia Wastukenca, Indonesia", logo: getImageUrl("logoProdia.png") }
 ]
 </script>
 

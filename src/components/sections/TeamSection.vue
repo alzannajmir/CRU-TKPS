@@ -10,12 +10,12 @@ const getImageUrl = (fileName) => {
 
 // Data Anggota Tim Lengkap (Bisa ditambah terus di sini)
 const coreTeam = [
-  { name: "Dr. Eddy Fadlyana, dr., Sp.P(K)., M.Kes", role: "Advisor", imageName: "DrEddy.png" },
-  { name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM", role: "Advisor", imageName: "ProfKus.png" },
-  { name: "Dr. Rodman Tarigan, dr., Sp.P(K)., M.Kes", role: "Responsible/Chairman", imageName: "DrRodman.png" },
-  { name: "Dr. Nama Anggota Baru 1, dr., Sp.A", role: "Co-Chairman", imageName: "default.png" },
-  { name: "Nama Anggota Baru 2, S.Kom", role: "Technical Lead", imageName: "default.png" },
-  { name: "Nama Anggota Baru 3, MBA", role: "Treasurer", imageName: "default.png" },
+  { name: "Dr. Eddy Fadlyana, dr., Sp.P(K)., M.Kes", role: "", imageName: "default.png" },
+  { name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM", role: "", imageName: "default.png" },
+  { name: "Dr. Rodman Tarigan, dr., Sp.P(K)., M.Kes", role: "", imageName: "default.png" },
+  { name: "Dr. Nama Anggota Baru 1, dr., Sp.A", role: "", imageName: "default.png" },
+  { name: "Nama Anggota Baru 2, S.Kom", role: "", imageName: "default.png" },
+  { name: "Nama Anggota Baru 3, MBA", role: "", imageName: "default.png" },
 ]
 
 // Hanya ambil 3 anggota pertama untuk di-highlight di Beranda
@@ -60,11 +60,11 @@ const featuredTeam = computed(() => coreTeam.slice(0, 3))
         </div>
       </div>
 
-      <div class="view-more-container">
+      <!-- <div class="view-more-container">
         <router-link to="/team" class="btn-view-team">
           <span>See All Team Members</span>
         </router-link>
-      </div>
+      </div> -->
 
     </div>
   </section>
