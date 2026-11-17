@@ -180,15 +180,8 @@ onUnmounted(() => {
   color: #002d6b;
   font-family: "Plus Jakarta Sans", sans-serif;
   overflow: hidden;
-<<<<<<< HEAD
   padding-top: 80px;
   background-color: #00122e;
-=======
-  padding-top: 80px; 
-  background-image: url('/src/assets/images/hero-bg.png');
-  background-size: cover;
-  background-position: center;
->>>>>>> 30a29fc (feat: add hero section background and update navigation logo asset)
 }
 
 /* --- CAROUSEL BACKGROUND --- */
