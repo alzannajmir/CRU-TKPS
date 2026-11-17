@@ -1,7 +1,27 @@
 <template>
+  <Navbar />
+
   <section v-if="project" class="research-detail-section">
     <div class="container">
-      <Navbar />
+      <div class="back-nav">
+        <router-link :to="backPath" class="back-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>{{ backLabel }}</span>
+        </router-link>
+      </div>
 
       <div class="detail-layout">
         <div class="main-content-block">
@@ -13,7 +33,7 @@
             class="progress-container"
             v-if="project.progress && project.progress.length"
           >
-            <h3 class="block-title">Research Timeline & Progress</h3>
+            <h2 class="block-title">Research Timeline &amp; Milestones</h2>
             <div class="timeline-wrapper">
               <div
                 v-for="(step, index) in project.progress"
@@ -30,7 +50,7 @@
                 </div>
                 <div class="timeline-content">
                   <div class="timeline-date">{{ step.date }}</div>
-                  <h4>{{ step.title }}</h4>
+                  <h3>{{ step.title }}</h3>
                   <p>{{ step.desc }}</p>
                 </div>
               </div>
@@ -53,37 +73,66 @@
             </div>
 
             <div
-  v-if="project.publications && project.publications.length"
-  class="publications-card"
->
-  <h3>Publications</h3>
-  <ul class="pub-list">
-    <li v-for="(pub, idx) in project.publications" :key="idx">
-      <!-- Menambahkan atribut download -->
-      <a :href="pub.link" :download="pub.title + '.pdf'" class="pub-link">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path
-            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-          ></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-        </svg>
-        <span>{{ pub.title }}</span>
-      </a>
-    </li>
-  </ul>
-</div>
+              v-if="project.publications && project.publications.length"
+              class="publications-card"
+            >
+              <h3>Publications &amp; Reports</h3>
+              <ul class="pub-list">
+                <li v-for="(pub, idx) in project.publications" :key="idx">
+                  <a
+                    v-if="pub.link && pub.link !== '#'"
+                    :href="pub.link"
+                    :download="pub.title + '.pdf'"
+                    class="pub-link"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                      ></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                    <span>Download PDF: {{ pub.title }}</span>
+                  </a>
+
+                  <div v-else class="pub-item-static">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                      ></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    <div>
+                      <span>{{ pub.title }}</span>
+                      <small class="archive-note"
+                        >Archived in CRU-TKPS Institutional Repository</small
+                      >
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -107,59 +156,74 @@
         <line x1="12" y1="8" x2="12" y2="12"></line>
         <line x1="12" y1="16" x2="12.01" y2="16"></line>
       </svg>
-      <p>Project data is not found or loading...</p>
-      <a href="/" class="btn-home">Return Home</a>
+      <p>Project data was not found.</p>
+      <router-link to="/" class="btn-home">Return Home</router-link>
     </div>
   </div>
   <Footer />
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 import { projectsData } from "../data/ProjectData.js";
 import Navbar from "../components/layout/Navbar.vue";
 import Footer from "../components/layout/Footer.vue";
 
-const project = ref(null);
+const route = useRoute();
 
-onMounted(() => {
-  let projectId = "";
+const project = computed(() => {
+  const projectId = route.params.id || route.query.id;
+  return projectsData.find((p) => p.id === projectId) || null;
+});
 
-  // 1. Coba deteksi menggunakan parameter query URL (?id=nama-project)
-  const urlParams = new URLSearchParams(window.location.search);
-  projectId = urlParams.get("id");
+const backPath = computed(() => {
+  return route.name === "research-activity" ? "/#journey" : "/#research";
+});
 
-  // 2. Fallback: Jika tidak ada query, coba baca segment path terakhir (/research/nama-project)
-  if (!projectId) {
-    const pathSegments = window.location.pathname.split("/").filter((p) => p);
-    projectId = pathSegments[pathSegments.length - 1];
-  }
-
-  // Cari data project berdasarkan ID yang berhasil diekstrak
-  if (projectId) {
-    project.value = projectsData.find((p) => p.id === projectId);
-  }
+const backLabel = computed(() => {
+  return route.name === "research-activity"
+    ? "Back to Ongoing Trials"
+    : "Back to Research Portfolio";
 });
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
-
 .research-detail-section {
   background-color: #ffffff;
-  /* JAWABAN: Padding-top disesuaikan (misal ditambah dari 60px ke 120px) */
-  /* Silakan sesuaikan angka 120px ini dengan tinggi Navbar Anda */
-  padding: 120px 0 120px 0; 
-  font-family: "Plus Jakarta Sans", sans-serif;
+  padding: 120px 0 110px 0;
+  min-height: 80dvh;
 }
+
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 0 24px;
 }
+
 .back-nav {
-  margin-bottom: 32px;
-  margin-top: 50px;
+  margin-bottom: 28px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0047a5;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 71, 165, 0.12);
+  padding: 9px 18px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #002d6b;
+  color: #ffffff;
+  border-color: #002d6b;
 }
 
 .detail-layout {
@@ -168,56 +232,64 @@ onMounted(() => {
   gap: 48px;
   align-items: start;
 }
+
 .project-badge {
   display: inline-block;
-  font-size: 11px;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: #0047a5;
-  background: rgba(0, 71, 165, 0.06);
+  background: rgba(0, 71, 165, 0.08);
   padding: 6px 14px;
   border-radius: 30px;
   margin-bottom: 16px;
 }
+
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.85rem, 1.4rem + 1.5vw, 2.5rem);
   color: #002d6b;
-  font-weight: 700;
-  margin: 0 0 24px 0;
-  line-height: 1.3;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  line-height: 1.25;
 }
+
 .long-desc {
-  font-size: 1.1rem;
-  color: #4a5568;
+  font-size: 1.08rem;
+  color: #475569;
   line-height: 1.8;
   margin-bottom: 48px;
 }
+
 .block-title {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   color: #002d6b;
   font-weight: 700;
   margin-bottom: 28px;
 }
 
-/* Timeline UI */
 .timeline-wrapper {
   display: flex;
   flex-direction: column;
 }
+
 .timeline-item {
   display: flex;
   gap: 24px;
   position: relative;
   padding-bottom: 32px;
 }
+
 .timeline-item:last-child {
   padding-bottom: 0;
 }
+
 .timeline-dot-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .timeline-dot {
   width: 14px;
   height: 14px;
@@ -227,6 +299,7 @@ h1 {
   box-shadow: 0 0 0 2px #cbd5e1;
   z-index: 2;
 }
+
 .timeline-line {
   width: 2px;
   background: #e2e8f0;
@@ -236,82 +309,94 @@ h1 {
   left: 6px;
   z-index: 1;
 }
+
 .timeline-item:last-child .timeline-line {
   display: none;
 }
+
 .timeline-content .timeline-date {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #94a3b8;
+  color: #64748b;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin-bottom: 4px;
 }
-.timeline-content h4 {
-  font-size: 1.1rem;
-  color: #1e293b;
+
+.timeline-content h3 {
+  font-size: 1.08rem;
+  color: #0f172a;
   margin: 0 0 6px 0;
   font-weight: 700;
 }
+
 .timeline-content p {
   font-size: 0.95rem;
-  color: #64748b;
+  color: #475569;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .status-completed .timeline-dot {
   background: #0047a5;
   box-shadow: 0 0 0 2px #0047a5;
 }
+
 .status-completed .timeline-line {
   background: #0047a5;
 }
+
 .status-active .timeline-dot {
   background: #ffc700;
-  box-shadow: 0 0 0 4px rgba(255, 199, 0, 0.2);
+  box-shadow: 0 0 0 4px rgba(255, 199, 0, 0.25);
 }
 
-/* Sidebar UI */
 .sticky-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
   position: sticky;
-  /* JAWABAN: Ditambah sedikit agar saat di-scroll, sidebar tidak mentok ke Navbar fixed Anda */
-  top: 100px; 
+  top: 100px;
 }
+
 .detail-spec-card,
 .publications-card {
   background: #f8fafc;
-  border: 1px solid rgba(0, 71, 165, 0.04);
+  border: 1px solid rgba(0, 71, 165, 0.08);
   border-radius: 20px;
   padding: 28px;
 }
+
 .detail-spec-card h3,
 .publications-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   color: #002d6b;
-  margin: 0 0 20px 0;
+  margin: 0 0 18px 0;
   font-weight: 700;
 }
+
 .spec-list-item {
   display: flex;
   flex-direction: column;
   padding: 10px 0;
   border-bottom: 1px solid #e2e8f0;
 }
+
 .spec-list-item:last-child {
   border-bottom: none;
 }
+
 .spec-list-item .label {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  color: #94a3b8;
+  color: #64748b;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
+
 .spec-list-item .value {
-  font-size: 0.98rem;
-  color: #1e293b;
+  font-size: 0.96rem;
+  color: #0f172a;
   font-weight: 600;
   margin-top: 2px;
 }
@@ -324,35 +409,60 @@ h1 {
   flex-direction: column;
   gap: 14px;
 }
+
 .pub-link {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: 10px;
-  color: #4a5568;
+  color: #0047a5;
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.94rem;
+  font-weight: 600;
   transition: color 0.2s;
 }
+
 .pub-link svg {
   color: #0047a5;
   flex-shrink: 0;
-  margin-top: 2px;
-}
-.pub-link:hover {
-  color: #0047a5;
+  margin-top: 3px;
 }
 
-/* Not Found Container */
+.pub-link:hover {
+  color: #002d6b;
+  text-decoration: underline;
+}
+
+.pub-item-static {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #334155;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.pub-item-static svg {
+  color: #64748b;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.archive-note {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-top: 2px;
+}
+
 .not-found-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  /* JAWABAN: Ditambah padding top juga untuk kondisi data tidak ditemukan */
-  padding-top: 100px; 
+  min-height: 70dvh;
+  padding-top: 100px;
 }
+
 .not-found-card {
   text-align: center;
   display: flex;
@@ -360,25 +470,28 @@ h1 {
   align-items: center;
   gap: 16px;
 }
+
 .not-found-card p {
   color: #64748b;
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0;
 }
+
 .btn-home {
-  background-color: #0047a5;
+  background-color: #002d6b;
   color: #ffffff;
   text-decoration: none;
   padding: 10px 24px;
-  border-radius: 8px;
+  border-radius: 999px;
   font-weight: 600;
   font-size: 0.95rem;
   margin-top: 8px;
   transition: background-color 0.2s;
 }
+
 .btn-home:hover {
-  background-color: #002d6b;
+  background-color: #0047a5;
 }
 
 @media (max-width: 992px) {
@@ -390,4 +503,4 @@ h1 {
     position: static;
   }
 }
-</style> 
+</style>

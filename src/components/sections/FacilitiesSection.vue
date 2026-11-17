@@ -1,271 +1,265 @@
 <script setup>
-import { register } from 'swiper/element/bundle'
+import facilityImg1 from "../../assets/images/Kulkas1.jpeg";
+import facilityImg2 from "../../assets/images/Kulkas2.jpeg";
+import facilityImg3 from "../../assets/images/Termometer.jpeg";
+import facilityImg4 from "../../assets/images/ruangan.jpeg";
+import facilityImg5 from "../../assets/images/lemari-penyimpanan-dokumen.jpeg";
 
-// Mengaktifkan elemen kustom Swiper (Swiper Custom Elements)
-register()
+const facilityImages = {
+  "Kulkas1.jpeg": facilityImg1,
+  "Kulkas2.jpeg": facilityImg2,
+  "Termometer.jpeg": facilityImg3,
+  "ruangan.jpeg": facilityImg4,
+  "lemari-penyimpanan-dokumen.jpeg": facilityImg5,
+};
 
-// Data Asli diulangi (diduplikasi) agar menjadi 6 item sesuai permintaan
+const getFacilityImg = (fileName) => {
+  if (!fileName) return "";
+  return facilityImages[fileName];
+};
+
 const facilities = [
   {
-    title: "Research Refrigerator",
-    desc: "Temperature controlled vaccine storage.",
-    imageName: "Kulkas1.png",
+    title: "Medical Research Refrigerator",
+    badge: "Cold-Chain Storage",
+    desc: "Precision temperature-controlled biological & vaccine storage engineered for clinical trial stability.",
+    imageName: "Kulkas1.jpeg",
     specs: [
-      "1st refrigerator (Sanyo)",
-      "Capacity: 602 L",
-      "Product dimensions (H/W/D): 2160 x 700 x 830 mm",
-      "Temperature range: 2°C to 16°C"
-    ]
+      "Primary Sanyo Biomedical Unit",
+      "Storage Capacity: 602 Liters",
+      "Dimensions (H/W/D): 2160 × 700 × 830 mm",
+      "Calibrated Range: 2°C to 16°C",
+    ],
   },
   {
-    title: "WiFi Monitoring Thermometer",
-    desc: "Real time monitoring and notification system.",
-    imageName: "Kulkas2.png",
+    title: "High-Capacity Cold Storage & Logger",
+    badge: "24/7 Telemetry",
+    desc: "Redundant cold-chain system integrated with continuous thermal sensors and automated cloud logging.",
+    imageName: "Kulkas2.jpeg",
     specs: [
-      "Capacity : 684 L",
-      "Instant Alarm Notifications",
-      "High-Precision Thermal Sensors",
-      "Automated Cloud Data Logging"
-    ]
+      "Extended Capacity: 684 Liters",
+      "High-Precision Thermal Probes",
+      "Automated Cloud Data Logging",
+      "Instant Deviation Alarm System",
+    ],
   },
   {
-    title: "Thermometer",
-    desc: "Internet‑connected thermometer with Wi‑Fi logging: real‑time monitoring, smartphone access, and automatic alerts.",
-    imageName: "Termomter.jpg",
+    title: "Wi-Fi Smart Monitoring Thermometer",
+    badge: "Real-Time Alerting",
+    desc: "Internet-connected digital telemetry providing remote smartphone supervision and instant SMS/email alerts.",
+    imageName: "Termometer.jpeg",
     specs: [
-      "Real-time Remote Access",
-      "Wi-Fi Cloud Logging",
-      "Automatic SMS/Email Alerts"
-    ]
+      "24/7 Real-Time Remote Access",
+      "Continuous Wi-Fi Cloud Audit Trail",
+      "Automated Multi-Channel Alerts (SMS/Email)",
+      "ICH-GCP Cold-Chain Compliance",
+    ],
   },
-  // Duplikasi Data ke-4
   {
-    title: "Research Refrigerator (Backup Unit)",
-    desc: "Temperature controlled vaccine storage.",
-    imageName: "Kulkas1.png",
+    title: "Clinical Examination & Consultation Room",
+    badge: "Participant Area",
+    desc: "Dedicated, private room for participant screening, informed consent counseling, and study procedures.",
+    imageName: "ruangan.jpeg",
     specs: [
-      "2nd refrigerator (Sanyo)",
-      "Capacity: 602 L",
-      "Product dimensions (H/W/D): 2160 x 700 x 830 mm",
-      "Temperature range: 2°C to 16°C"
-    ]
+      "Private Consultation & Examination Space",
+      "Comfortable Seating for Participants & Guardians",
+      "Hand Hygiene & Sanitizer Stations",
+      "Air-Conditioned, Well-Lit Environment",
+    ],
   },
-  // Duplikasi Data ke-5
   {
-    title: "WiFi Monitoring System B",
-    desc: "Real time monitoring and notification system.",
-    imageName: "Kulkas2.png",
+    title: "Secure CRF & Document Archive",
+    badge: "ICH-GCP Archive",
+    desc: "Access-controlled filing cabinets for Case Report Forms, source documents, and Trial Master Files.",
+    imageName: "lemari-penyimpanan-dokumen.jpeg",
     specs: [
-      "Capacity : 684 L",
-      "Instant Alarm Notifications",
-      "High-Precision Thermal Sensors",
-      "Automated Cloud Data Logging"
-    ]
+      "Lockable, Dedicated Document Cabinets",
+      "Organized CRF & Source Document Filing",
+      "Restricted, Access-Controlled Storage",
+      "Supports ICH-GCP Record Retention",
+    ],
   },
-  // Duplikasi Data ke-6
-  {
-    title: "Secondary Thermometer",
-    desc: "Internet‑connected thermometer with Wi‑Fi logging: real‑time monitoring, smartphone access, and automatic alerts.",
-    imageName: "Termomter.jpg",
-    specs: [
-      "Real-time Remote Access",
-      "Wi-Fi Cloud Logging",
-      "Automatic SMS/Email Alerts"
-    ]
-  }
-]
-
-// Fungsi pembantu lokal (Ini yang dipakai di template)
-const getFacilityImg = (fileName) => {
-  if (!fileName) return ''
-  return new URL(`/src/assets/images/${fileName}`, import.meta.url).href
-}
+];
 </script>
 
 <template>
   <section id="facilities" class="facilities-section">
     <div class="container">
-
       <div class="section-header">
-        <span class="sub-title">Infrastructure</span>
-        <h2>Our <span class="highlight">Facilities</span></h2>
+        <span class="eyebrow-pill">Clinical Infrastructure</span>
+        <h2>Cold-Chain &amp; <span class="highlight">Facilities</span></h2>
+        <p class="section-subtitle">
+          Dedicated ICH-GCP compliant vaccine storage and 24/7 automated thermal
+          monitoring systems.
+        </p>
         <div class="accent-line"></div>
       </div>
 
-      <div class="carousel-wrapper">
-        <swiper-container
-          slides-per-view="3"
-          space-between="32"
-          loop="true"
-          :navigation="{
-            prevEl: '.custom-nav-prev',
-            nextEl: '.custom-nav-next'
-          }"
-          :pagination="{
-            el: '.custom-swiper-pagination',
-            clickable: true
-          }"
-          :breakpoints="{
-            '0': {
-              slidesPerView: 1,
-              spaceBetween: 20
-            },
-            '768': {
-              slidesPerView: 2,
-              spaceBetween: 24
-            },
-            '1024': {
-              slidesPerView: 3,
-              spaceBetween: 32
-            }
-          }"
-          class="facilities-swiper"
+      <div class="facilities-grid">
+        <article
+          v-for="(item, index) in facilities"
+          :key="index"
+          class="facility-card"
         >
-          <swiper-slide 
-            v-for="(item, index) in facilities" 
-            :key="index"
-            class="swiper-slide-card"
-          >
-            <div class="facility-card">
-              <div class="card-number">0{{ (index % 3) + 1 }}</div>
-              
-              <div class="facility-image-wrapper">
-                <img 
-                  v-if="item.imageName" 
-                  :src="getFacilityImg(item.imageName)" 
-                  :alt="item.title" 
-                  class="facility-img" 
-                />
-                <div v-else class="image-placeholder">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                </div>
+          <div class="facility-image-wrapper">
+            <span class="facility-badge">{{ item.badge }}</span>
+            <img
+              :src="getFacilityImg(item.imageName)"
+              :alt="item.title"
+              class="facility-img"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="card-body">
+            <div class="card-number">0{{ index + 1 }}</div>
+            <h3>{{ item.title }}</h3>
+            <p class="main-desc">{{ item.desc }}</p>
+
+            <div class="specs-box">
+              <div
+                v-for="(spec, specIdx) in item.specs"
+                :key="specIdx"
+                class="spec-item"
+              >
+                <span class="spec-dot"></span>
+                <span class="spec-text">{{ spec }}</span>
               </div>
-              
-              <div class="card-body">
-                <h3>{{ item.title }}</h3>
-                <p class="main-desc">{{ item.desc }}</p>
-                
-                <div class="specs-box">
-                  <div v-for="(spec, specIdx) in item.specs" :key="specIdx" class="spec-item">
-                    <span class="spec-dot"></span>
-                    <span class="spec-text">{{ spec }}</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="card-border-glow"></div>
             </div>
-          </swiper-slide>
-        </swiper-container>
+          </div>
 
-        <button class="custom-nav-btn custom-nav-prev" aria-label="Previous slide">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="custom-nav-btn custom-nav-next" aria-label="Next slide">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-
-        <div class="custom-swiper-pagination"></div>
+          <div class="card-border-glow"></div>
+        </article>
       </div>
 
+      <!-- Clinical Site Readiness Banner -->
+      <div class="clinical-suites-bar">
+        <div class="suite-item">
+          <div class="suite-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h4>Dedicated Informed Consent Suite</h4>
+            <p>Private counseling rooms for participant screening &amp; guardian consultation.</p>
+          </div>
+        </div>
+
+        <div class="suite-item">
+          <div class="suite-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div>
+            <h4>Clinical Procedure &amp; AEFI Observation</h4>
+            <p>Equipped for pediatric immunization, phlebotomy, and post-vaccination monitoring.</p>
+          </div>
+        </div>
+
+        <div class="suite-item">
+          <div class="suite-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <h4>Restricted CRF &amp; Document Archive</h4>
+            <p>Access-controlled storage for Case Report Forms and Trial Master Files (ICH-GCP).</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-
 .facilities-section {
-  background-color: #F8FAFC; 
-  padding: 120px 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #ffffff;
+  padding: 110px 0;
 }
 
-.container {
-  max-width: 1240px; 
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* --- Header --- */
 .section-header {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 
-.sub-title {
-  font-size: 14px;
+.eyebrow-pill {
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #0052CC; 
-  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+  color: #0047a5;
+  background: rgba(0, 71, 165, 0.08);
+  border: 1px solid rgba(0, 71, 165, 0.14);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 14px;
 }
 
 h2 {
-  font-size: 2.5rem;
-  color: #002D6B; 
-  margin: 0 0 16px 0;
-  font-weight: 700;
+  font-size: clamp(1.9rem, 1.4rem + 1.5vw, 2.6rem);
+  color: #002d6b;
+  margin: 0 0 12px 0;
+  font-weight: 800;
 }
 
 h2 .highlight {
-  color: #0047A5; 
+  color: #0047a5;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 0 18px 0;
 }
 
 .accent-line {
-  width: 50px;
+  width: 52px;
   height: 4px;
-  background-color: #0047A5;
+  background-color: #0047a5;
   border-radius: 2px;
 }
 
-/* ======================================================= */
-/* --- AREA GRID CAROUSEL & KARTU ------------------------ */
-/* ======================================================= */
-
-.carousel-wrapper {
-  position: relative;
-  /* Memberikan ruang kosong di kanan-kiri untuk tempat tombol navigasi */
-  padding: 0 64px; 
-}
-
-.facilities-swiper {
-  /* Padding bottom dibersihkan karena pagination dipindah ke luar */
-  padding-bottom: 20px !important; 
-  position: relative;
-}
-
-.swiper-slide-card {
-  height: auto; 
-  display: flex;
-  padding-bottom: 16px; 
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .facility-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 71, 165, 0.05);
+  background: #f8fafc;
+  border: 1px solid rgba(0, 71, 165, 0.08);
   border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0, 45, 107, 0.03);
+  box-shadow: 0 6px 24px rgba(0, 45, 107, 0.03);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%; 
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .facility-image-wrapper {
   width: 100%;
-  height: 200px; 
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  background-color: #EDF2F7;
+  background-color: #e2e8f0;
   position: relative;
-  z-index: 2; 
+}
+
+.facility-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  background: rgba(0, 24, 61, 0.85);
+  backdrop-filter: blur(6px);
+  color: #ffc700;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: 999px;
 }
 
 .facility-img {
@@ -273,62 +267,51 @@ h2 .highlight {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  display: block;
 }
 
-.image-placeholder {
-  width: 100%;
-  height: 100%;
+.card-body {
+  padding: 30px 28px;
+  position: relative;
+  flex-grow: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #A0AEC0;
+  flex-direction: column;
 }
 
 .card-number {
   position: absolute;
-  right: 20px;
-  top: 170px; 
-  font-size: 5rem;
+  right: 22px;
+  top: 16px;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: rgba(0, 71, 165, 0.04); 
+  color: rgba(0, 71, 165, 0.05);
   line-height: 1;
-  z-index: 3; 
   pointer-events: none;
   user-select: none;
-  transition: all 0.4s ease;
-}
-
-.card-body {
-  padding: 32px 28px;
-  position: relative;
-  z-index: 4; 
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .facility-card h3 {
   margin: 0 0 10px 0;
   font-weight: 700;
   font-size: 1.25rem;
-  color: #002D6B;
-  line-height: 1.4;
+  color: #002d6b;
+  line-height: 1.35;
 }
 
 .main-desc {
   margin: 0 0 20px 0;
-  font-size: 0.95rem;
-  color: #4A5568;
-  line-height: 1.5;
+  font-size: 0.94rem;
+  color: #475569;
+  line-height: 1.6;
 }
 
 .specs-box {
-  border-top: 1px dashed rgba(0, 71, 165, 0.08);
+  border-top: 1px dashed rgba(0, 71, 165, 0.12);
   padding-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: auto; 
+  margin-top: auto;
 }
 
 .spec-item {
@@ -340,7 +323,7 @@ h2 .highlight {
 .spec-dot {
   width: 6px;
   height: 6px;
-  background-color: #FFC700; 
+  background-color: #ffc700;
   border-radius: 50%;
   margin-top: 6px;
   flex-shrink: 0;
@@ -348,7 +331,7 @@ h2 .highlight {
 
 .spec-text {
   font-size: 0.88rem;
-  color: #64748B;
+  color: #334155;
   line-height: 1.4;
   font-weight: 500;
 }
@@ -359,116 +342,74 @@ h2 .highlight {
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: #0047A5;
+  background-color: #0047a5;
   transform: scaleX(0);
   transition: transform 0.3s ease;
-  z-index: 5;
 }
 
-/* --- Hover Effects --- */
 .facility-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 48px rgba(0, 45, 107, 0.07);
-  border-color: rgba(0, 71, 165, 0.12);
+  transform: translateY(-6px);
+  background: #ffffff;
+  box-shadow: 0 22px 44px rgba(0, 45, 107, 0.08);
+  border-color: rgba(0, 71, 165, 0.16);
 }
 
 .facility-card:hover .facility-img {
-  transform: scale(1.06);
-}
-
-.facility-card:hover .card-number {
-  color: rgba(255, 199, 0, 0.15);
-  transform: translateY(-10px);
+  transform: scale(1.05);
 }
 
 .facility-card:hover .card-border-glow {
   transform: scaleX(1);
 }
 
-/* ======================================================= */
-/* --- DESIGN TOMBOL NAVIGASI KUSTOM (SANGAT AMAN) ------- */
-/* ======================================================= */
+.clinical-suites-bar {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  background: linear-gradient(135deg, #002d6b 0%, #00183d 100%);
+  border-radius: 24px;
+  padding: 32px;
+  color: #ffffff;
+}
 
-.custom-nav-btn {
-  position: absolute;
-  top: 45%; 
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: #FFFFFF;
-  border: none;
-  color: #0047A5;
+.suite-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.suite-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 199, 0, 0.14);
+  color: #ffc700;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 45, 107, 0.12);
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
-.custom-nav-prev {
-  left: 0px;
+.suite-item h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
 }
 
-.custom-nav-next {
-  right: 0px;
+.suite-item p {
+  color: #cbd5e1;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin: 0;
 }
-
-.custom-nav-btn:hover {
-  background-color: #0047A5;
-  color: #FFFFFF;
-}
-
-/* ======================================================= */
-/* --- DESAIN PAGINATION DI LUAR (TURUN MAKSIMAL & AMAN) - */
-/* ======================================================= */
-
-.custom-swiper-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  margin-top: 40px; /* Menentukan jarak turunnya titik dari batas bawah kartu */
-}
-
-/* Mengatur style bulatan DOM asli yang digenerate Swiper di luar */
-:deep(.custom-swiper-pagination .swiper-pagination-bullet) {
-  background-color: #94A3B8 !important;
-  opacity: 0.4 !important;
-  width: 8px !important;
-  height: 8px !important;
-  border-radius: 50% !important;
-  display: inline-block;
-  cursor: pointer;
-  margin: 0 !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Mengatur style kapsul aktif di luar shadow DOM */
-:deep(.custom-swiper-pagination .swiper-pagination-bullet-active) {
-  background-color: #0047A5 !important;
-  width: 24px !important;
-  border-radius: 6px !important;
-  opacity: 1 !important;
-}
-
-/* ======================================================= */
-/* --- RESPONSIVE MOBILE & TABLET ------------------------ */
-/* ======================================================= */
 
 @media (max-width: 992px) {
-  .carousel-wrapper {
-    padding: 0 32px; 
-  }
-  .custom-nav-btn {
-    width: 40px;
-    height: 40px;
-  }
-  .custom-swiper-pagination {
-    margin-top: 32px;
+  .facilities-grid,
+  .clinical-suites-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
 
@@ -476,19 +417,9 @@ h2 .highlight {
   .facilities-section {
     padding: 80px 0;
   }
-  h2 {
-    font-size: 2rem;
-  }
-  .carousel-wrapper {
-    padding: 0 8px; 
-  }
-  /* Sembunyikan navigasi klik di HP, fokus swipe pakai layar */
-  .custom-nav-btn {
-    display: none; 
-  }
-  .custom-swiper-pagination {
-    margin-top: 24px;
-    gap: 8px;
+  .facilities-grid,
+  .clinical-suites-bar {
+    grid-template-columns: 1fr;
   }
 }
 </style>
