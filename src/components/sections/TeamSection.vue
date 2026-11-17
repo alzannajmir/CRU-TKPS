@@ -1,89 +1,96 @@
 <script setup>
-import { computed } from 'vue'
-import TeamDetail from '../../views/TeamDetail.vue'
+import profKusImg from "../../assets/images/ProfKus.png";
+import drEddyImg from "../../assets/images/DrEddy.png";
+import drRodmanImg from "../../assets/images/DrRodman.png";
 
-// Fungsi pembantu otomatis mengarah ke folder src/assets/images/
-const getImageUrl = (fileName) => {
-  if (!fileName) return ''
-  return new URL(`/src/assets/images/${fileName}`, import.meta.url).href
-}
-
-// Data Anggota Tim Lengkap (Bisa ditambah terus di sini)
-const coreTeam = [
-  { name: "Dr. Eddy Fadlyana, dr., Sp.P(K)., M.Kes", role: "", imageName: "default.png" },
-  { name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM", role: "", imageName: "default.png" },
-  { name: "Dr. Rodman Tarigan, dr., Sp.P(K)., M.Kes", role: "", imageName: "default.png" },
-  { name: "Dr. Nama Anggota Baru 1, dr., Sp.A", role: "", imageName: "default.png" },
-  { name: "Nama Anggota Baru 2, S.Kom", role: "", imageName: "default.png" },
-  { name: "Nama Anggota Baru 3, MBA", role: "", imageName: "default.png" },
-]
-
-// Hanya ambil 3 anggota pertama untuk di-highlight di Beranda
-const featuredTeam = computed(() => coreTeam.slice(0, 3))
+const featuredTeam = [
+  {
+    name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM",
+    role: "Senior Advisor & Principal Investigator",
+    specialty: "Growth & Development – Social Pediatrics Consultant",
+    image: profKusImg,
+  },
+  {
+    name: "Dr. Eddy Fadlyana, dr., Sp.A(K)., M.Kes",
+    role: "Head of CRU & Principal Investigator",
+    specialty: "Growth & Development – Social Pediatrics Consultant",
+    image: drEddyImg,
+  },
+  {
+    name: "Dr. Rodman Tarigan, dr., Sp.A(K)., M.Kes",
+    role: "Co-Principal Investigator",
+    specialty: "Growth & Development – Social Pediatrics Consultant",
+    image: drRodmanImg,
+  },
+];
 </script>
 
 <template>
   <section id="team" class="team-section">
     <div class="container">
-
       <div class="section-header">
-        <span class="sub-title">Our Experts</span>
-        <h2>Meet The <span class="highlight">Team</span></h2>
+        <span class="eyebrow-pill">Clinical Leadership</span>
+        <h2>Principal <span class="highlight">Investigators</span></h2>
+        <p class="section-subtitle">
+          Led by senior pediatric subspecialists and certified clinical trial
+          investigators at Faculty of Medicine Universitas Padjadjaran.
+        </p>
         <div class="accent-line"></div>
       </div>
 
       <div class="team-grid">
-        <div
+        <article
           class="team-card"
           v-for="member in featuredTeam"
           :key="member.name"
         >
           <div class="avatar-wrapper">
             <div class="avatar-image-box">
-              <img 
-                v-if="member.imageName" 
-                :src="getImageUrl(member.imageName)" 
-                :alt="member.name" 
-                class="member-img" 
+              <img
+                :src="member.image"
+                :alt="member.name"
+                class="member-img"
+                loading="lazy"
               />
-              <div v-else class="avatar-fallback">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
             </div>
-            <div class="avatar-orbit-ring"></div>
+            <div class="avatar-orbit-ring" aria-hidden="true"></div>
           </div>
 
           <div class="member-info">
+            <span class="role-badge">{{ member.role }}</span>
             <h3>{{ member.name }}</h3>
-            <div class="role-badge">{{ member.role }}</div>
+            <p class="member-specialty">{{ member.specialty }}</p>
           </div>
-        </div>
+        </article>
       </div>
 
-      <!-- <div class="view-more-container">
+      <div class="view-more-container">
         <router-link to="/team" class="btn-view-team">
-          <span>See All Team Members</span>
+          <span>Meet All CRU-TKPS Team Members</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
         </router-link>
-      </div> -->
-
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-/* ... Menggunakan CSS lama Anda ... */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-
 .team-section {
-  background-color: #FFFFFF; 
-  padding: 120px 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.container {
-  max-width: 1140px; 
-  margin: auto;
-  padding: 0 24px;
+  background-color: #f8fafc;
+  padding: 110px 0;
 }
 
 .section-header {
@@ -91,99 +98,102 @@ const featuredTeam = computed(() => coreTeam.slice(0, 3))
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 
-.sub-title {
-  font-size: 14px;
+.eyebrow-pill {
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #0052CC; 
-  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+  color: #0047a5;
+  background: rgba(0, 71, 165, 0.08);
+  border: 1px solid rgba(0, 71, 165, 0.14);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 14px;
 }
 
 h2 {
-  font-size: 2.5rem;
-  color: #002D6B; 
-  margin: 0 0 16px 0;
-  font-weight: 700;
+  font-size: clamp(1.9rem, 1.4rem + 1.5vw, 2.6rem);
+  color: #002d6b;
+  margin: 0 0 12px 0;
+  font-weight: 800;
 }
 
 h2 .highlight {
-  color: #0047A5; 
+  color: #0047a5;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 620px;
+  margin: 0 0 18px 0;
 }
 
 .accent-line {
-  width: 50px;
+  width: 52px;
   height: 4px;
-  background-color: #FFC700; 
+  background-color: #ffc700;
   border-radius: 2px;
 }
 
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 28px;
 }
 
 .team-card {
-  background: #F8FAFC; 
-  border: 1px solid rgba(0, 71, 165, 0.04);
-  padding: 50px 32px; 
+  background: #ffffff;
+  border: 1px solid rgba(0, 71, 165, 0.08);
+  padding: 44px 28px;
   border-radius: 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 20px rgba(0, 45, 107, 0.01);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 24px rgba(0, 45, 107, 0.03);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .avatar-wrapper {
   position: relative;
-  width: 130px; 
-  height: 130px;
-  margin-bottom: 28px;
+  width: 148px;
+  height: 148px;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 24px;
 }
 
 .avatar-image-box {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 71, 165, 0.05);
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
   border-radius: 50%;
-  overflow: hidden; 
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  border: 4px solid #FFFFFF; 
-  box-shadow: 0 8px 16px rgba(0, 45, 107, 0.04);
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 45, 107, 0.08);
   transition: all 0.3s ease;
 }
 
 .member-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
-  transition: transform 0.3s ease;
-}
-
-.avatar-fallback {
-  color: #0047A5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.35s ease;
 }
 
 .avatar-orbit-ring {
   position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px dashed rgba(0, 71, 165, 0.15);
+  inset: -6px;
+  border: 2px dashed rgba(0, 71, 165, 0.2);
   border-radius: 50%;
   z-index: 1;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -193,74 +203,79 @@ h2 .highlight {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+.role-badge {
+  font-size: 0.72rem;
+  color: #0047a5;
+  background-color: rgba(0, 71, 165, 0.08);
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .member-info h3 {
-  font-size: 1.25rem;
-  color: #002D6B;
+  font-size: 1.18rem;
+  color: #002d6b;
   margin: 0;
   font-weight: 700;
   line-height: 1.4;
 }
 
-.role-badge {
-  font-size: 0.78rem;
-  color: #0047A5;
-  background-color: rgba(0, 71, 165, 0.06);
-  font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 100px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  display: inline-block;
-  transition: all 0.3s ease;
+.member-specialty {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
 }
 
 .team-card:hover {
-  transform: translateY(-8px);
-  background: #FFFFFF;
-  border-color: rgba(0, 71, 165, 0.12);
-  box-shadow: 0 24px 48px rgba(0, 45, 107, 0.08);
+  transform: translateY(-6px);
+  border-color: rgba(0, 71, 165, 0.18);
+  box-shadow: 0 22px 44px rgba(0, 45, 107, 0.08);
 }
 
 .team-card:hover .member-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .team-card:hover .avatar-image-box {
-  border-color: #0047A5;
+  border-color: #0047a5;
 }
 
 .team-card:hover .avatar-orbit-ring {
-  border-color: #FFC700;
-  border-style: solid; 
-  transform: scale(1.04) rotate(90deg);
+  border-color: #ffc700;
+  border-style: solid;
+  transform: scale(1.03);
 }
 
 .team-card:hover .role-badge {
-  background-color: #0047A5;
-  color: #FFFFFF;
+  background-color: #002d6b;
+  color: #ffc700;
 }
 
-/* --- CSS TAMBAHAN UNTUK TOMBOL VIEW MORE --- */
 .view-more-container {
   text-align: center;
-  margin-top: 56px;
+  margin-top: 48px;
 }
 
 .btn-view-team {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: #0047A5;
-  color: #FFFFFF;
-  padding: 14px 32px;
-  border-radius: 100px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  background-color: #002d6b;
+  color: #ffffff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 0.94rem;
+  font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0, 71, 165, 0.15);
+  box-shadow: 0 10px 24px rgba(0, 45, 107, 0.16);
   transition: all 0.3s ease;
 }
 
@@ -269,8 +284,8 @@ h2 .highlight {
 }
 
 .btn-view-team:hover {
-  background-color: #002D6B;
-  box-shadow: 0 12px 28px rgba(0, 45, 107, 0.25);
+  background-color: #0047a5;
+  box-shadow: 0 14px 28px rgba(0, 71, 165, 0.24);
   transform: translateY(-2px);
 }
 
@@ -279,13 +294,22 @@ h2 .highlight {
 }
 
 @media (max-width: 992px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
 }
 
 @media (max-width: 768px) {
-  .team-section { padding: 80px 0; }
-  h2 { font-size: 2rem; }
-  .team-grid { grid-template-columns: 1fr; gap: 20px; }
-  .team-card { padding: 40px 24px; }
+  .team-section {
+    padding: 80px 0;
+  }
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .team-card {
+    padding: 36px 24px;
+  }
 }
-</style> 
+</style>

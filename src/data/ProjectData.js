@@ -1,3 +1,6 @@
+const resolvePdfUrl = (filename) =>
+  new URL(`../assets/publications/${filename}`, import.meta.url).href;
+
 export const projectsData = [
   {
     id: "sinovac-trial",
@@ -46,7 +49,7 @@ export const projectsData = [
     publications: [
       {
         title: "Efficacy and Safety of Inactivated Vaccine - Lancet Regional",
-        link: "jurnal-hexa-01.pdf", // Cukup tulis nama file. Pastikan file ada di src/assets/pdf/
+        link: resolvePdfUrl("Sinovac-COVID-19.pdf"),
       },
     ],
   },

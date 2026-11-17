@@ -38,19 +38,19 @@
               <div class="spec-table">
                 <div class="spec-item">
                   <div class="spec-label">Sponsor</div>
-                  <div class="spec-value">{{ project.details.Sponsor }}</div>
+                  <div class="spec-value">{{ project.details.sponsor }}</div>
                 </div>
                 <div class="spec-item">
                   <div class="spec-label">Recruited Participants</div>
-                  <div class="spec-value highlight-value">{{ project.details.Participants }}</div>
+                  <div class="spec-value highlight-value">{{ project.details.participants }}</div>
                 </div>
                 <div class="spec-item">
                   <div class="spec-label">Project Duration</div>
-                  <div class="spec-value">{{ project.details.Duration }}</div>
+                  <div class="spec-value">{{ project.details.duration }}</div>
                 </div>
                 <div class="spec-item">
                   <div class="spec-label">Participating Sites</div>
-                  <div class="spec-value sites-list">{{ project.details.Sites }}</div>
+                  <div class="spec-value sites-list">{{ project.details.sites }}</div>
                 </div>
               </div>
             </div>
@@ -70,18 +70,13 @@
 
 <script setup>
 import { projectsData } from '../data/ProjectData.js'
-// Jika menggunakan Vue Router asli, silakan aktifkan di bawah:
-// import { useRouter } from 'vue-router'
-// const router = useRouter()
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const projects = projectsData
 
 const goToDetail = (id) => {
-  // Jika menggunakan Vue Router SPA (Rekomendasi):
-  // router.push({ name: 'ResearchDetail', params: { id } })
-  
-  // Jika menggunakan URL native bawaan browser:
-  window.location.href = `/research/${id}`
+  router.push(`/research/${id}`)
 }
 </script>
 
