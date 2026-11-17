@@ -1,24 +1,27 @@
 <script setup>
-import profKusImg from "../../assets/images/ProfKus.png";
-import drEddyImg from "../../assets/images/DrEddy.png";
-import drRodmanImg from "../../assets/images/DrRodman.png";
+import profCissy from "../../assets/images/profCissy.png";
+import profKusImg from "../../assets/images/profKus.jpeg";
+import drEddyImg from "../../assets/images/DrEddy.jpeg";
+import drRodmanImg from "../../assets/images/DrRodman.jpeg";
 
 const featuredTeam = [
   {
+    name:"Prof. Cissy B. Kartasasmita, dr., Sp.A(K).,MSc.,PhD.",
+    specialty: "Growth & Development – Social Pediatrics Consultant",
+    image: profCissy,
+  },
+  {
     name: "Prof. Dr. Kusnandi Rusmil, dr., Sp.A(K)., MM",
-    role: "Senior Advisor & Principal Investigator",
     specialty: "Growth & Development – Social Pediatrics Consultant",
     image: profKusImg,
   },
   {
     name: "Dr. Eddy Fadlyana, dr., Sp.A(K)., M.Kes",
-    role: "Head of CRU & Principal Investigator",
     specialty: "Growth & Development – Social Pediatrics Consultant",
     image: drEddyImg,
   },
   {
     name: "Dr. Rodman Tarigan, dr., Sp.A(K)., M.Kes",
-    role: "Co-Principal Investigator",
     specialty: "Growth & Development – Social Pediatrics Consultant",
     image: drRodmanImg,
   },
@@ -57,14 +60,13 @@ const featuredTeam = [
           </div>
 
           <div class="member-info">
-            <span class="role-badge">{{ member.role }}</span>
             <h3>{{ member.name }}</h3>
             <p class="member-specialty">{{ member.specialty }}</p>
           </div>
         </article>
       </div>
 
-      <div class="view-more-container">
+      <!-- <div class="view-more-container">
         <router-link to="/team" class="btn-view-team">
           <span>Meet All CRU-TKPS Team Members</span>
           <svg
@@ -82,7 +84,7 @@ const featuredTeam = [
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </router-link>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -204,19 +206,6 @@ h2 .highlight {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-}
-
-.role-badge {
-  font-size: 0.72rem;
-  color: #0047a5;
-  background-color: rgba(0, 71, 165, 0.08);
-  font-weight: 700;
-  padding: 5px 14px;
-  border-radius: 999px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  display: inline-block;
-  transition: all 0.3s ease;
 }
 
 .member-info h3 {

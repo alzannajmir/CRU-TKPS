@@ -154,6 +154,29 @@
           </div>
         </article>
       </div>
+
+      <!-- CTA: View All Projects -->
+      <div class="cta-view-all">
+        <router-link
+          to="/research"
+          class="btn-view-all"
+        >
+          <span>View All Projects</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </router-link>
+      </div>
     </div>
   </section>
 </template>
@@ -498,6 +521,56 @@ h2 .highlight {
 
 .clickable-card {
   cursor: pointer;
+}
+
+.cta-view-all {
+  margin-top: 48px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.btn-view-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #002d6b 0%, #0047a5 100%);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 14px 34px;
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 26px rgba(0, 45, 107, 0.22);
+  border: 1px solid rgba(255, 199, 0, 0.18);
+  min-width: 210px;
+}
+
+.btn-view-all:hover {
+  background: linear-gradient(135deg, #0047a5 0%, #002d6b 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(0, 45, 107, 0.3);
+  border-color: rgba(255, 199, 0, 0.4);
+  color: #ffffff;
+}
+
+.btn-view-all:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn-view-all svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.btn-view-all:hover svg {
+  transform: translateX(6px);
 }
 
 @media (max-width: 992px) {

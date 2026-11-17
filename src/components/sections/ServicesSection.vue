@@ -73,7 +73,7 @@
           <h3>Community-Based Surveillance</h3>
           <p>
             Field-driven epidemiological research integrated with social
-            pediatrics across regional primary healthcare centers (Puskesmas) to
+            pediatrics across regional primary healthcare centers to
             inform public health policy.
           </p>
           <div class="service-tags">

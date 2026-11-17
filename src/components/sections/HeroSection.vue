@@ -139,7 +139,7 @@
       </div>
 
       <!-- KEY IMPACT METRICS BAR -->
-      <div class="stats-bar">
+      <!-- <div class="stats-bar">
         <div
           v-for="(metric, idx) in metrics"
           :key="idx"
@@ -149,16 +149,16 @@
           <span class="stat-label">{{ metric.label }}</span>
           <span class="stat-sub">{{ metric.sub }}</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import heroImg1 from "../../assets/images/hero.jpg";
+import heroImg1 from "../../assets/images/hero.jpeg";
 import heroImg2 from "../../assets/images/hero-bg.jpeg";
-import heroImg3 from "../../assets/hero.png";
+import heroImg3 from "../../assets/images/ruangan.jpeg";
 
 const slides = ref([
   {
@@ -209,7 +209,7 @@ const metrics = [
   {
     value: "ICH-GCP",
     label: "Standardized Protocol",
-    sub: "Multi-site hospital & Puskesmas network",
+    sub: "Multi-site hospital & primary health center network",
   },
 ];
 

@@ -4,7 +4,7 @@
   <section v-if="project" class="research-detail-section">
     <div class="container">
       <div class="back-nav">
-        <router-link to="/#research" class="back-btn">
+        <router-link :to="backPath" class="back-btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -19,7 +19,7 @@
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
-          <span>Back to Research Portfolio</span>
+          <span>{{ backLabel }}</span>
         </router-link>
       </div>
 
@@ -175,6 +175,16 @@ const route = useRoute();
 const project = computed(() => {
   const projectId = route.params.id || route.query.id;
   return projectsData.find((p) => p.id === projectId) || null;
+});
+
+const backPath = computed(() => {
+  return route.name === "research-activity" ? "/#journey" : "/#research";
+});
+
+const backLabel = computed(() => {
+  return route.name === "research-activity"
+    ? "Back to Ongoing Trials"
+    : "Back to Research Portfolio";
 });
 </script>
 

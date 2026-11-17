@@ -11,7 +11,7 @@ const allPartners = [
   { name: "SINOVAC Biotech Ltd.", logo: getImageUrl("logoSinovac.png") },
   { name: "Anhui Zhifei Longcom Biopharmaceutical", logo: getImageUrl("logoZhifei.png") },
   { name: "Minhai Biotechnology Co., Ltd.", logo: getImageUrl("logoMinhai.jpg") },
-  { name: "Laboratorium Klinik Prodia", logo: getImageUrl("logoProdia.png") },
+  { name: "Prodia Clinical Laboratory", logo: getImageUrl("logoProdia.png") },
   { name: "Equilab International", logo: getImageUrl("logoEquilab.png") },
 ];
 </script>

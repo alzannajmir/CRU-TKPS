@@ -42,7 +42,7 @@
               </div>
               <div class="item-text">
                 <h4>Office Address</h4>
-                <p>Jl. Prof. Eyckman No. 38, Pasteur, Bandung 40161</p>
+                <p>Pasteur Street No. 38, Bandung 40161</p>
                 <span class="sub-detail"
                   >West Java, Indonesia (FK UNPAD Campus)</span
                 >
@@ -84,7 +84,7 @@
               </div>
             </div>
 
-            <div class="contact-item">
+            <!-- <div class="contact-item">
               <div class="icon-box">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -108,9 +108,9 @@
                   >24/7 Cold-Chain &amp; Adverse Event Monitoring Active</span
                 >
               </div>
-            </div>
+            </div> -->
 
-            <div class="cta-box">
+            <!-- <div class="cta-box">
               <a href="mailto:cru.ika.tkpsrshs@gmail.com" class="email-cta-btn">
                 <span>Send Partnership Inquiry</span>
                 <svg
@@ -128,7 +128,7 @@
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </a>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -136,7 +136,7 @@
           <div class="map-card">
             <iframe
               title="CRU-TKPS Faculty of Medicine Universitas Padjadjaran Location Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.992661555546!2d107.59836377484673!3d-6.891436193107572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e65870020a51%3A0xa94f9996dfec0aa8!2sJl.%20Prof.%20Eyckman%20No.38%2C%20Pasteur%2C%20Kec.%20Sukajadi%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040161!5e0!3m2!1sid!2sid!4v1718000000000!5m2!1sid!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.992661555546!2d107.59836377484673!3d-6.891436193107572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e65870020a51%3A0xa94f9996dfec0aa8!2sJl.%20Pasteur%20No.%2038%2C%20Bandung%2040161!5e0!3m2!1sen!2sid!4v1718000000000!5m2!1sen!2sid"
               width="100%"
               height="100%"
               style="border: 0"

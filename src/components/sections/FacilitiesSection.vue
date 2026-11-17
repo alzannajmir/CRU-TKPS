@@ -1,7 +1,21 @@
 <script setup>
+import facilityImg1 from "../../assets/images/Kulkas1.jpeg";
+import facilityImg2 from "../../assets/images/Kulkas2.jpeg";
+import facilityImg3 from "../../assets/images/Termometer.jpeg";
+import facilityImg4 from "../../assets/images/ruangan.jpeg";
+import facilityImg5 from "../../assets/images/lemari-penyimpanan-dokumen.jpeg";
+
+const facilityImages = {
+  "Kulkas1.jpeg": facilityImg1,
+  "Kulkas2.jpeg": facilityImg2,
+  "Termometer.jpeg": facilityImg3,
+  "ruangan.jpeg": facilityImg4,
+  "lemari-penyimpanan-dokumen.jpeg": facilityImg5,
+};
+
 const getFacilityImg = (fileName) => {
   if (!fileName) return "";
-  return new URL(`../../assets/images/${fileName}`, import.meta.url).href;
+  return facilityImages[fileName];
 };
 
 const facilities = [
@@ -9,7 +23,7 @@ const facilities = [
     title: "Medical Research Refrigerator",
     badge: "Cold-Chain Storage",
     desc: "Precision temperature-controlled biological & vaccine storage engineered for clinical trial stability.",
-    imageName: "Kulkas1.png",
+    imageName: "Kulkas1.jpeg",
     specs: [
       "Primary Sanyo Biomedical Unit",
       "Storage Capacity: 602 Liters",
@@ -21,7 +35,7 @@ const facilities = [
     title: "High-Capacity Cold Storage & Logger",
     badge: "24/7 Telemetry",
     desc: "Redundant cold-chain system integrated with continuous thermal sensors and automated cloud logging.",
-    imageName: "Kulkas2.png",
+    imageName: "Kulkas2.jpeg",
     specs: [
       "Extended Capacity: 684 Liters",
       "High-Precision Thermal Probes",
@@ -33,12 +47,36 @@ const facilities = [
     title: "Wi-Fi Smart Monitoring Thermometer",
     badge: "Real-Time Alerting",
     desc: "Internet-connected digital telemetry providing remote smartphone supervision and instant SMS/email alerts.",
-    imageName: "Termomter.jpg",
+    imageName: "Termometer.jpeg",
     specs: [
       "24/7 Real-Time Remote Access",
       "Continuous Wi-Fi Cloud Audit Trail",
       "Automated Multi-Channel Alerts (SMS/Email)",
       "ICH-GCP Cold-Chain Compliance",
+    ],
+  },
+  {
+    title: "Clinical Examination & Consultation Room",
+    badge: "Participant Area",
+    desc: "Dedicated, private room for participant screening, informed consent counseling, and study procedures.",
+    imageName: "ruangan.jpeg",
+    specs: [
+      "Private Consultation & Examination Space",
+      "Comfortable Seating for Participants & Guardians",
+      "Hand Hygiene & Sanitizer Stations",
+      "Air-Conditioned, Well-Lit Environment",
+    ],
+  },
+  {
+    title: "Secure CRF & Document Archive",
+    badge: "ICH-GCP Archive",
+    desc: "Access-controlled filing cabinets for Case Report Forms, source documents, and Trial Master Files.",
+    imageName: "lemari-penyimpanan-dokumen.jpeg",
+    specs: [
+      "Lockable, Dedicated Document Cabinets",
+      "Organized CRF & Source Document Filing",
+      "Restricted, Access-Controlled Storage",
+      "Supports ICH-GCP Record Retention",
     ],
   },
 ];

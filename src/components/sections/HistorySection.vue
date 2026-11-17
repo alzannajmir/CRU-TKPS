@@ -6,8 +6,7 @@ const ongoingResearch = [
     sponsor: "Bio Farma",
     participants: "75 newborns",
     duration: "Apr 2026 – Apr 2027",
-    sites: ["RSUD Bandung Kiwari"],
-    status: "Start-up • Site Activation",
+    sites: ["Bandung Kiwari Regional Hospital"],
   },
   {
     id: "hep-b-vaccine",
@@ -16,28 +15,15 @@ const ongoingResearch = [
     participants: "270 newborns",
     duration: "May 2026 – Mar 2027",
     sites: [
-      "Puskesmas Batujajar",
+      "Batujajar Primary Health Center",
       "Garuda",
+      "Cipamokolan",
       "Al Faiha Clinic",
-      "PMB Sri Maemunah Cihampelas",
+      "Sri Maemunah Independent Midwife Practice",
+      "Yuyun Independent Midwife Practice",
+      "Iyam Independent Midwife Practice"
     ],
-    status: "Start-up Phase",
-  },
-  {
-    id: "hexavalent-phase-2",
-    title: "HEXAVALENT Phase II",
-    sponsor: "Bio Farma",
-    participants: "405 newborns",
-    duration: "Oct 2026 – Mar 2028",
-    sites: [
-      "Puskesmas Batujajar",
-      "Garuda",
-      "Al Faiha Clinic",
-      "PMB Sri Maemunah Cihampelas",
-      "RSUD Bandung Kiwari",
-    ],
-    status: "Start-up Phase",
-  },
+  }
 ];
 </script>
 
@@ -64,10 +50,6 @@ const ongoingResearch = [
           <div>
             <div class="card-header-meta">
               <span class="project-index">Study 0{{ index + 1 }}</span>
-              <div class="status-badge">
-                <span class="pulse-dot"></span>
-                {{ project.status }}
-              </div>
             </div>
 
             <div class="project-title-box">

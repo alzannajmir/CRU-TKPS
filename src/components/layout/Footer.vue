@@ -61,8 +61,8 @@ import logoCru from "../../assets/images/logoCRU.png";
           <h4>Coordination Office</h4>
           <p class="contact-line">
             <strong>Address:</strong><br />
-            Jl. Prof. Eyckman No. 38, Pasteur,<br />
-            Bandung 40161, West Java, Indonesia
+            Pasteur Street No. 38, Bandung 40161,<br />
+            West Java, Indonesia
           </p>
           <p class="contact-line">
             <strong>Email:</strong><br />
